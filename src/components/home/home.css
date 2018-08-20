@@ -1,0 +1,10 @@
+/**** HOME ****/
+.home-container {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+}
+.home-header {
+  height: 100vh;
+  align-self: stretch;
+}
