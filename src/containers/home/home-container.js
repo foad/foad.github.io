@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { init } from '../../services/home-service'
 
+import '../../components/home/home.css'
 import HomeHeader from '../../components/home/home-header'
 
 class HomeContainer extends React.Component {

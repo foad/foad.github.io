@@ -7,10 +7,12 @@
 *:before, *:after {
   box-sizing: inherit;
 }
+body {
+  font-size: 62.5%;
+}
 html, body, #root {
   width: 100%;
   height: 100%;
-  font-size: 62.5%;
 }
 
 /**** APP ****/
@@ -18,4 +20,91 @@ html, body, #root {
   width: 100%;
   height: 100%;
   font-family: "Open Sans", sans-serif;
+}
+
+/**** NAV ****/
+.main-nav {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  max-width: 1200px;
+  height: 48px;
+  margin: 16px auto 0;
+}
+.main-nav__title {
+  border-bottom: 1px solid #FFFFFF;
+  padding-bottom: 16px;
+  position: relative;
+  padding-right: 8px;
+}
+.main-nav__title a {
+  text-transform: uppercase;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: #1E282E;
+  line-height: 32px;
+  padding: 0 16px;
+  height: 32px;
+  text-decoration: none;
+}
+.main-nav__title span {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: normal;
+}
+.main-nav__edge {
+  position: absolute;
+  right: -24px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 32px 32px 0 0;
+  border-left-width: 100%;
+  border-color: rgba(255, 255, 255, 0.75) transparent transparent transparent;
+}
+.main-nav__slant {
+  width: 48px;
+  height: 1px;
+  transform: rotate(-45deg) scaleX(1.4);
+  transform-origin: bottom left;
+  position: relative;
+  background: #FFFFFF;
+  top: 47px;
+  right: -1px;
+}
+.main-nav__links {
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  border-top: 1px solid #FFFFFF;
+  font-family: 'Space Mono', monospace;
+}
+.main-nav__links li {
+  padding: 0 6px;
+  margin: 0 24px;
+  font-size: 1.3em;
+  cursor: pointer;
+  position: relative;
+}
+.main-nav__links li:hover {
+  color: #1E282E;
+  background-color: #63859B;
+}
+.main-nav__links li:hover:before {
+  content: '';
+  width: 16px;
+  height: 100%;
+  background-color: rgb(120, 184, 226);
+  position: absolute;
+  left: -20px;
+  top: 0;
+  opacity: 0.8;
+  animation: flash 0.5s ease-in-out infinite alternate;
+}
+@keyframes flash {
+  from { opacity: 0; }
+  to { opacity: 0.8; }
 }
