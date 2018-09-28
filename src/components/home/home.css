@@ -27,35 +27,80 @@
   font-weight: 200;
   line-height: 1.1em;
   text-align: right;
+  padding-left: 64px;
+  border-bottom: 2px solid #FFFFFF;
+  position: relative;
+}
+.home-header__name:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 4px;
+  background-color: #FFFFFF;
 }
 .home-header__title {
   font-size: 1.2em;
   position: relative;
-  top: 32px;
+  top: 64px;
 }
 .home-header__title h3 {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   border-bottom: 1px solid #FFFFFF;
-  padding: 8px 0;
+  padding: 8px 8px 8px 0;
+  font-size: 1.3em;
 }
 .home-header__logo {
   display: inline-block;
-  height: 24px;
-  margin-right: 16px;
+  height: 32px;
+  margin-right: 24px;
   filter: brightness(100);
 }
 .home-header__title p {
-  margin-left: 55px;
+  margin-left: 76px;
   padding-top: 8px;
+  font-size: 1.1em;
 }
 .home-header__title:after {
   content: '';
   position: absolute;
   top:0;
-  left: 47px;
-  height: 1000%;
+  left: 64px;
+  height: 200%;
   width: 1px;
   background: #FFFFFF;
+}
+.home-header__buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-bottom: 64px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.home-header__contact {
+  border-radius: 0;
+  background: 0;
+  color: #FFFFFF;
+  font-size: 1.5em;
+  padding: 16px 32px;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  display: flex;
+  align-items: center;
+}
+.home-header__contact:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.home-header__contact img {
+  height: 24px;
+  margin-right: 16px;
 }

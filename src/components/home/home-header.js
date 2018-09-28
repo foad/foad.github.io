@@ -14,6 +14,9 @@ export default class HomeHeader extends React.Component {
           </h3>
           <p>Currently working with NowTV</p>
         </div>
+        <div className="home-header__buttons">
+          <button className="home-header__contact"><img src="/contact.png" alt=""/>Contact Me</button>
+        </div>
       </div>
     )
   }
