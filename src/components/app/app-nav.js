@@ -9,13 +9,15 @@ export default class AppNav extends React.Component {
           <div className="main-nav__edge" />
         </h1>
         <div className="main-nav__slant" />
-        <ul className="main-nav__links">
-          <li>Home</li>
-          <li>Projects</li>
-          <li>CV</li>
-          <li>Blog</li>
-          <li>Contact Me</li>
-        </ul>
+        <div className="main-nav__links--container">
+          <ul className="main-nav__links">
+            <li>Home</li>
+            <li>Projects</li>
+            <li>CV</li>
+            <li>Blog</li>
+            <li>Contact Me</li>
+          </ul>
+        </div>
       </nav>
     )
   }

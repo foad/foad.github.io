@@ -24,10 +24,8 @@ html, body, #root {
 
 /**** NAV ****/
 .main-nav {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  max-width: 1200px;
+  display: grid;
+  grid-template-columns: [start] auto [header-start] 400px [header-slant] 48px [header-mid] 752px [header-end] auto [end];
   height: 48px;
   position: fixed;
   top: 16px;
@@ -40,6 +38,7 @@ html, body, #root {
   padding-bottom: 16px;
   position: relative;
   padding-right: 8px;
+  grid-column: start / header-slant;
 }
 .main-nav__title a {
   text-transform: uppercase;
@@ -49,6 +48,8 @@ html, body, #root {
   line-height: 32px;
   padding: 0 16px;
   height: 32px;
+  width: 100%;
+  text-align: right;
   text-decoration: none;
 }
 .main-nav__title span {
@@ -67,23 +68,30 @@ html, body, #root {
   border-color: rgba(255, 255, 255, 0.75) transparent transparent transparent;
 }
 .main-nav__slant {
+  grid-column: header-slant / header-mid;
   width: 48px;
   height: 1px;
   transform: rotate(-45deg) scaleX(1.4);
   transform-origin: bottom left;
   position: relative;
   background: #FFFFFF;
-  top: 47px;
+  top: 48px;
   right: -1px;
 }
+.main-nav__links--container {
+  grid-column: header-mid / end;
+  display: grid;
+  grid-template-columns: [nav-start] 752px [nav-end] auto [end];
+  border-top: 1px solid #FFFFFF;
+}
 .main-nav__links {
+  grid-column: nav-start / nav-end;
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-end;
   flex: 1;
-  border-top: 1px solid #FFFFFF;
   font-family: 'Space Mono', monospace;
 }
 .main-nav__links li {
