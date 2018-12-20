@@ -17,7 +17,7 @@ export default class HomeHeader extends React.Component {
         <div className="home-header__buttons">
           <button className="home-header__contact">
             <img src="/contact.png" alt="" />
-            Contact Me
+            <span>Contact Me</span>
           </button>
         </div>
       </div>

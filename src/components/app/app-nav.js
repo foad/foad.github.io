@@ -1,6 +1,22 @@
 import React from 'react';
 
 export default class AppNav extends React.Component {
+  convertIndex(index) {
+    return index < 9 ? '0' + ++index : ++index;
+  }
+
+  getNavLinks() {
+    const links = ['Home', 'Projects', 'CV', 'Blog', 'Contact Me'];
+    return links.map((link, index) => {
+      return (
+        <li>
+          <span class="index">{this.convertIndex(index)}</span>
+          {link}
+        </li>
+      );
+    });
+  }
+
   getNavContents() {
     return (
       <nav className="main-nav">
@@ -12,13 +28,7 @@ export default class AppNav extends React.Component {
         </h1>
         <div className="main-nav__slant" />
         <div className="main-nav__links--container">
-          <ul className="main-nav__links">
-            <li>Home</li>
-            <li>Projects</li>
-            <li>CV</li>
-            <li>Blog</li>
-            <li>Contact Me</li>
-          </ul>
+          <ul className="main-nav__links">{this.getNavLinks()}</ul>
         </div>
       </nav>
     );
