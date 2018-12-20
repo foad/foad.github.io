@@ -7,8 +7,8 @@
 .home-header {
   height: 100vh;
   align-self: stretch;
-  background-color: #1E282E;
-  color: #FFFFFF;
+  background-color: #1e282e;
+  color: #ffffff;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -28,7 +28,7 @@
   line-height: 1.1em;
   text-align: right;
   padding-left: 64px;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #ffffff;
   position: relative;
 }
 .home-header__name:before {
@@ -38,7 +38,7 @@
   bottom: 0;
   width: 48px;
   height: 4px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .home-header__title {
   font-size: 1.2em;
@@ -99,7 +99,7 @@
 .home-header__contact {
   border-radius: 0;
   background: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.5em;
   padding: 16px 32px;
   font-family: 'Space Mono', monospace;

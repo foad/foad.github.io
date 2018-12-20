@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 export default class AppNav extends React.Component {
   getNavContents() {
     return (
       <nav className="main-nav">
         <h1 className="main-nav__title">
-          <a href="/">Dan Foad :: <span>Associate Software Developer</span></a>
+          <a href="/">
+            Dan Foad :: <span>Associate Software Developer</span>
+          </a>
           <div className="main-nav__edge" />
         </h1>
         <div className="main-nav__slant" />
@@ -19,10 +21,10 @@ export default class AppNav extends React.Component {
           </ul>
         </div>
       </nav>
-    )
+    );
   }
-  
+
   render() {
-    return this.getNavContents()
+    return this.getNavContents();
   }
 }

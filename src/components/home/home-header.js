@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import AppNav from '../app/app-nav'
+import AppNav from '../app/app-nav';
 
 export default class HomeHeader extends React.Component {
   getHeader() {
@@ -15,22 +15,23 @@ export default class HomeHeader extends React.Component {
           <p>Currently working with NowTV</p>
         </div>
         <div className="home-header__buttons">
-          <button className="home-header__contact"><img src="/contact.png" alt=""/>Contact Me</button>
+          <button className="home-header__contact">
+            <img src="/contact.png" alt="" />
+            Contact Me
+          </button>
         </div>
       </div>
-    )
+    );
   }
-  
+
   render() {
     return (
       <header className="home-header">
         <AppNav />
-        { this.getHeader() }
-      </header> 
-    )
+        {this.getHeader()}
+      </header>
+    );
   }
 }
 
-HomeHeader.propTypes = {
-  
-};
+HomeHeader.propTypes = {};

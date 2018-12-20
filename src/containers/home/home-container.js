@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import PropTypes from "prop-types";
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
-import { init } from '../../services/home-service'
+import { init } from '../../services/home-service';
 
-import '../../components/home/home.css'
-import HomeHeader from '../../components/home/home-header'
+import '../../components/home/home.scss';
+import HomeHeader from '../../components/home/home-header';
 
 class HomeContainer extends React.Component {
   componentDidMount() {
-    this.props.init()
+    this.props.init();
   }
 
   render() {
@@ -18,13 +18,11 @@ class HomeContainer extends React.Component {
       <div className="home-container">
         <HomeHeader />
       </div>
-      )
+    );
   }
 }
 
-HomeContainer.propTypes = {
-  
-};
+HomeContainer.propTypes = {};
 
 const mapStateToProps = state => ({});
 
