@@ -10,14 +10,14 @@ export default class HomeHeader extends React.Component {
         <h1 className="home-header__name">Dan Foad</h1>
         <div className="home-header__title">
           <h3>
-            <img className="home-header__logo" src="/skylogo.png" alt="" />
+            <img className="home-header__logo" src="/img/skylogo.png" alt="" />
             Associate Software Developer
           </h3>
           <p>Currently working with NowTV</p>
         </div>
         <div className="home-header__buttons">
           <button className="home-header__contact">
-            <img src="/contact.png" alt="" />
+            <img src="/img/contact.png" alt="" />
             <span>Contact Me</span>
           </button>
         </div>
