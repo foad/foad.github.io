@@ -1,12 +1,14 @@
 import React from 'react';
 
+import { t } from '../../services/label-service';
+
 export default class AppNav extends React.Component {
   convertIndex(index) {
     return index++ < 9 ? '0' + index : index;
   }
 
   getNavLinks() {
-    const links = ['Home', 'Projects', 'CV', 'Blog', 'Contact Me'];
+    const links = Object.values(t('app.nav.links'));
     return links.map((link, index) => {
       return (
         <li key={index}>
@@ -22,7 +24,7 @@ export default class AppNav extends React.Component {
       <nav className="main-nav">
         <h1 className="main-nav__title">
           <a href="/">
-            Dan Foad :: <span>Associate Software Developer</span>
+            {t('general.name')} :: <span>{t('general.role')}</span>
           </a>
           <div className="main-nav__edge" />
         </h1>
