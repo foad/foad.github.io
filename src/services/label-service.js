@@ -1,27 +1,22 @@
 let allLabels;
 
-const mockLabels = {
-  'general.name': 'Dan Foad',
-  'general.role': 'Associate Software Developer',
-  'home.header.subline': 'Currently working with NowTV',
-  'home.header.contact': 'Contact Me',
-  'app.nav.links': {
-    'app.links.home': 'Home',
-    'app.links.projects': 'Projects',
-    'app.links.cv': 'CV',
-    'app.links.blog': 'Blog',
-    'app.links.contact': 'Contact Me'
-  }
-};
+// TODO: Replace with request util + config
+const labelURI = 'http://localhost:5000/labels';
 
-function t(label) {
-  return allLabels[label];
+function t(label, startsWith = false) {
+  if (!startsWith) return allLabels[label];
+
+  return Object.entries(allLabels)
+    .filter(l => l[0].startsWith(label))
+    .map(l => l[1]);
 }
 
 function getLabels() {
   return new Promise((resolve, reject) => {
-    // TODO: call label backend endpoint
-    resolve(mockLabels);
+    fetch(labelURI)
+      .then(response => response.json())
+      .then(data => resolve(data.labels))
+      .catch(error => reject(error));
   });
 }
 

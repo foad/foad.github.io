@@ -8,7 +8,7 @@ export default class AppNav extends React.Component {
   }
 
   getNavLinks() {
-    const links = Object.values(t('app.nav.links'));
+    const links = t('app.nav.links', true);
     return links.map((link, index) => {
       return (
         <li key={index}>
