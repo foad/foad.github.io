@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { appSelector } from './app-selector';
-
 import { init as initLabels } from '../../services/label-service';
 import HomeContainer from '../../containers/home/home-container';
+
+import { appSelector } from './app-selector';
 
 import './app.scss';
 
@@ -27,12 +27,12 @@ export class App extends Component {
 
 App.propTypes = {
   labelsLoading: PropTypes.bool,
-  initLabels: PropTypes.func.isRequired
+  initLabels: PropTypes.func.isRequired,
 };
 
 export default connect(
   appSelector,
   {
-    initLabels
+    initLabels,
   }
 )(App);

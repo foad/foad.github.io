@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 
 import { init } from '../../services/home-service';
-
 import '../../components/home/home.scss';
 import HomeHeader from '../../components/home/home-header';
 
@@ -21,9 +21,11 @@ class HomeContainer extends React.Component {
   }
 }
 
-HomeContainer.propTypes = {};
+HomeContainer.propTypes = {
+  init: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
 

@@ -3,10 +3,6 @@ import React from 'react';
 import { t } from '../../services/label-service';
 
 export default class AppNav extends React.Component {
-  convertIndex(index) {
-    return index++ < 9 ? '0' + index : index;
-  }
-
   getNavLinks() {
     const links = t('app.nav.links', true);
     return links.map((link, index) => {
@@ -34,6 +30,10 @@ export default class AppNav extends React.Component {
         </div>
       </nav>
     );
+  }
+
+  convertIndex(index) {
+    return index < 9 ? `0${index + 1}` : index + 1;
   }
 
   render() {

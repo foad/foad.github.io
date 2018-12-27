@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { t } from '../../services/label-service';
-
 import AppNav from '../app/app-nav';
+
 import HomeHeaderPipeline from './home-header-pipeline';
 
 export default class HomeHeader extends React.Component {
@@ -18,7 +18,7 @@ export default class HomeHeader extends React.Component {
           <p>{t('home.header.subline')}</p>
         </div>
         <div className="home-header__buttons">
-          <button className="home-header__contact">
+          <button className="home-header__contact" type="button">
             <img src="/img/contact.png" alt="" />
             <span>{t('home.header.contact')}</span>
           </button>

@@ -23,13 +23,13 @@ const getLabels = () => {
 const init = () => {
   return dispatch => {
     dispatch({
-      type: 'LABELS_LOADING'
+      type: 'LABELS_LOADING',
     });
     return getLabels()
       .then(labels => {
         allLabels = labels;
         dispatch({
-          type: 'LABELS_LOADED'
+          type: 'LABELS_LOADED',
         });
       })
       .catch(err => {

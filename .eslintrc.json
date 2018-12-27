@@ -1,0 +1,71 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "assert": false,
+    "__rewire_reset_all__": false
+  },
+  "extends": [
+    "./.eslintrc.base.json",
+    "./.eslintrc.import.json",
+    "./.eslintrc.prettier.json",
+    "./.eslintrc.promise.json",
+    "./.eslintrc.react.json"
+  ],
+  "rules": {
+    "prefer-promise-reject-errors": "off",
+    "import/no-named-as-default": "off",
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "/^on.+$/",
+          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+          "everything-else",
+          "/^render.+$/",
+          "render"
+        ],
+        "groups": {
+          "lifecycle": [
+            "displayName",
+            "propTypes",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "constructor",
+            "getDefaultProps",
+            "getInitialState",
+            "getChildContext",
+            "componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "componentDidUpdate",
+            "componentWillUnmount"
+          ]
+        }
+      }
+    ],
+    "react/no-deprecated": "warn",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["*node_modules*"]
+      }
+    ]
+  }
+}

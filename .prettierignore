@@ -1,0 +1,9 @@
+package.json
+**/widgets/**/*.json
+**/labelling-feed/**/*.json
+*.md
+*.ejs
+*.scss
+stats.json
+.lintstagedrc.json
+dist

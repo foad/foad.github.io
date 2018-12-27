@@ -5,18 +5,18 @@ import { appSelector } from './app-selector';
 describe('app-selector', () => {
   const state = {
     app: {
-      labelsLoading: false
-    }
+      labelsLoading: false,
+    },
   };
 
   const expected = {
-    labelsLoading: false
+    labelsLoading: false,
   };
 
   const newState = {
     app: {
-      labelsLoading: true
-    }
+      labelsLoading: true,
+    },
   };
 
   selectorTests(appSelector, state, expected, newState);

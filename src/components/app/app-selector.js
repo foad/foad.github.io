@@ -4,7 +4,7 @@ export const appSelector = createSelector(
   [state => state.app],
   app => {
     return {
-      labelsLoading: app.labelsLoading
+      labelsLoading: app.labelsLoading,
     };
   }
 );

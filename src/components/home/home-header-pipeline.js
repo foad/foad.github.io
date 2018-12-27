@@ -65,17 +65,15 @@ function initPipes() {
 }
 
 function initPipe(i) {
-  let x, y, direction, speed, life, ttl, width, hue, done;
-
-  x = p.rand(canvas.a.width - headerLeft);
-  y = center[1] + p.rand(canvas.a.height / 2) - canvas.a.height / 4;
-  direction = p.round(p.rand(1)) ? p.HALF_PI : p.TAU - p.HALF_PI;
-  speed = baseSpeed + p.rand(rangeSpeed);
-  life = 0;
-  ttl = baseTTL + p.rand(rangeTTL);
-  width = baseWidth + p.rand(rangeWidth);
-  hue = baseHue + p.rand(rangeHue);
-  done = false;
+  const x = p.rand(canvas.a.width - headerLeft);
+  const y = center[1] + p.rand(canvas.a.height / 2) - canvas.a.height / 4;
+  const direction = p.round(p.rand(1)) ? p.HALF_PI : p.TAU - p.HALF_PI;
+  const speed = baseSpeed + p.rand(rangeSpeed);
+  const life = 0;
+  const ttl = baseTTL + p.rand(rangeTTL);
+  const width = baseWidth + p.rand(rangeWidth);
+  const hue = baseHue + p.rand(rangeHue);
+  const done = false;
   pipeIncrement++;
 
   pipeProps.set([x, y, direction, speed, life, ttl, width, hue, done], i);
@@ -92,25 +90,35 @@ function updatePipes() {
 }
 
 function updatePipe(i) {
-  let i2 = 1 + i,
-    i3 = 2 + i,
-    i4 = 3 + i,
-    i5 = 4 + i,
-    i6 = 5 + i,
-    i7 = 6 + i,
-    i8 = 7 + i,
-    i9 = 8 + i;
-  let x, y, direction, speed, life, ttl, width, hue, done, turnChance, turnBias;
+  const i2 = 1 + i;
+
+  const i3 = 2 + i;
+
+  const i4 = 3 + i;
+
+  const i5 = 4 + i;
+
+  const i6 = 5 + i;
+
+  const i7 = 6 + i;
+
+  const i8 = 7 + i;
+
+  const i9 = 8 + i;
+  let x;
+  let y;
+  let direction;
+  let life;
 
   x = pipeProps[i];
   y = pipeProps[i2];
   direction = pipeProps[i3];
-  speed = pipeProps[i4];
+  const speed = pipeProps[i4];
   life = pipeProps[i5];
-  ttl = pipeProps[i6];
-  width = pipeProps[i7];
-  hue = pipeProps[i8];
-  done = pipeProps[i9];
+  const ttl = pipeProps[i6];
+  const width = pipeProps[i7];
+  const hue = pipeProps[i8];
+  const done = pipeProps[i9];
 
   if (done) return;
 
@@ -119,10 +127,8 @@ function updatePipe(i) {
   life++;
   x += p.cos(direction) * speed;
   y += p.sin(direction) * speed;
-  turnChance =
-    !(tick % p.round(p.rand(turnChanceRange))) &&
-    (!(p.round(x) % 6) || !(p.round(y) % 6));
-  turnBias = p.round(p.rand(1)) ? -1 : 1;
+  const turnChance = !(tick % p.round(p.rand(turnChanceRange))) && (!(p.round(x) % 6) || !(p.round(y) % 6));
+  const turnBias = p.round(p.rand(1)) ? -1 : 1;
   direction += turnChance ? turnAmount * turnBias : 0;
 
   pipeProps[i] = x;
@@ -130,7 +136,7 @@ function updatePipe(i) {
   pipeProps[i3] = direction;
   pipeProps[i5] = life;
 
-  checkBounds(x, y);
+  [x, y] = checkBounds(x, y);
   if (life > ttl) {
     if (pipeIncrement <= maxPipeCount) initPipe(i);
     else pipeProps[i9] = true;
@@ -139,8 +145,7 @@ function updatePipe(i) {
 
 function drawPipe(x, y, life, ttl, width, hue) {
   ctx.a.save();
-  ctx.a.strokeStyle = `hsla(${hue},100%,100%,${p.fadeInOut(life, ttl) *
-    0.125})`;
+  ctx.a.strokeStyle = `hsla(${hue},100%,100%,${p.fadeInOut(life, ttl) * 0.125})`;
   ctx.a.beginPath();
   ctx.a.arc(x, y, width, 0, p.TAU);
   ctx.a.stroke();
@@ -149,20 +154,21 @@ function drawPipe(x, y, life, ttl, width, hue) {
 }
 
 function checkBounds(x, y) {
-  if (x > canvas.a.width) x = 0;
-  if (x < 0) x = canvas.a.width;
-  if (y > canvas.a.height) y = 0;
-  if (y < 0) y = canvas.a.height;
+  let newX = x;
+  let newY = y;
+  if (x > canvas.a.width) newX = 0;
+  if (x < 0) newX = canvas.a.width;
+  if (y > canvas.a.height) newY = 0;
+  if (y < 0) newY = canvas.a.height;
+  return [newX, newY];
 }
 
 function createCanvas() {
   container = document.querySelector('.home-header');
-  headerLeft =
-    document.querySelector('.home-header__name').getBoundingClientRect().left -
-    128;
+  headerLeft = document.querySelector('.home-header__name').getBoundingClientRect().left - 128;
   canvas = {
     a: document.createElement('canvas'),
-    b: document.createElement('canvas')
+    b: document.createElement('canvas'),
   };
   canvas.b.style = `
 		position: fixed;
@@ -175,7 +181,7 @@ function createCanvas() {
   container.appendChild(canvas.b);
   ctx = {
     a: canvas.a.getContext('2d'),
-    b: canvas.b.getContext('2d')
+    b: canvas.b.getContext('2d'),
   };
   center = [];
   tick = 0;

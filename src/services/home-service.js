@@ -1,7 +1,7 @@
 function init() {
   return {
     type: 'HOME_INIT',
-    payload: null
+    payload: null,
   };
 }
 

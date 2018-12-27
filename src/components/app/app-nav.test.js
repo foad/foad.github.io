@@ -8,7 +8,7 @@ jest.mock('../../services/label-service');
 describe('app-container', () => {
   const makeProps = extendProps => {
     return {
-      ...extendProps
+      ...extendProps,
     };
   };
 
@@ -34,7 +34,7 @@ describe('app-container', () => {
       renderContainer();
       const convertIndex = wrapper.instance().convertIndex;
       for (let i = 0; i < 9; i++) {
-        expect(convertIndex(i)).toEqual('0' + (i + 1));
+        expect(convertIndex(i)).toEqual(`0${i + 1}`);
       }
     });
 

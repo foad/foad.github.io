@@ -10,7 +10,7 @@ describe('app-container', () => {
     return {
       labelsLoading: false,
       initLabels: jest.fn(),
-      ...extendProps
+      ...extendProps,
     };
   };
 
