@@ -14,13 +14,14 @@
     "__rewire_reset_all__": false
   },
   "extends": [
-    "./.eslintrc.base.json",
-    "./.eslintrc.import.json",
-    "./.eslintrc.prettier.json",
-    "./.eslintrc.promise.json",
-    "./.eslintrc.react.json"
+    "./.eslint/.eslintrc.base.json",
+    "./.eslint/.eslintrc.import.json",
+    "./.eslint/.eslintrc.prettier.json",
+    "./.eslint/.eslintrc.promise.json",
+    "./.eslint/.eslintrc.react.json"
   ],
   "rules": {
+    "no-console": "off",
     "prefer-promise-reject-errors": "off",
     "import/no-named-as-default": "off",
     "react/sort-comp": [
