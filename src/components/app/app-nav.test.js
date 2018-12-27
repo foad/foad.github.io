@@ -3,12 +3,7 @@ import { shallow } from 'enzyme';
 
 import AppNav from './app-nav';
 
-jest.mock('../../services/label-service', () => ({
-  t: (label, startsWith = false) => {
-    if (!startsWith) return label;
-    return [label];
-  }
-}));
+jest.mock('../../services/label-service');
 
 describe('app-container', () => {
   const makeProps = extendProps => {
