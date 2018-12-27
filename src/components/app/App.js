@@ -9,7 +9,7 @@ import HomeContainer from '../../containers/home/home-container';
 
 import './app.scss';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.props.initLabels();
   }

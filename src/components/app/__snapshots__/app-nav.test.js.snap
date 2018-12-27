@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app-container should match snapshot 1`] = `
+<nav
+  className="main-nav"
+>
+  <h1
+    className="main-nav__title"
+  >
+    <a
+      href="/"
+    >
+      general.name
+       :: 
+      <span>
+        general.role
+      </span>
+    </a>
+    <div
+      className="main-nav__edge"
+    />
+  </h1>
+  <div
+    className="main-nav__slant"
+  />
+  <div
+    className="main-nav__links--container"
+  >
+    <ul
+      className="main-nav__links"
+    >
+      <li
+        key="0"
+      >
+        <span
+          className="index"
+        >
+          01
+        </span>
+        app.nav.links
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
