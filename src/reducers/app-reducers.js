@@ -1,6 +1,6 @@
 import { createReducer } from '../utils/redux-utils';
 
-const initialState = {
+export const initialState = {
   labelsLoading: true,
 };
 
