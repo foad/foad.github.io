@@ -18,7 +18,9 @@ export class HomeHeaderPipeline extends React.Component {
         maxSpeed: 1,
         minLifetime: 0,
         maxLifeTime: 0,
+        minX: 0,
         maxX: 0,
+        minY: 0,
         maxY: 0,
         maxTurns: 5,
       },
@@ -51,15 +53,45 @@ export class HomeHeaderPipeline extends React.Component {
             maxY: this.canvas.current.getBoundingClientRect().height,
           },
         }),
-        () => {
-          resolve();
-        }
+        resolve
       );
     });
   }
 
   generatePipes() {
-    return Promise.resolve();
+    return new Promise(resolve => {
+      const pipes = [];
+
+      for (let i = 0; i < this.state.pipeCount; i++) {
+        pipes.push(this.generatePipe(i));
+      }
+
+      this.setState({ pipes }, resolve);
+    });
+  }
+
+  generatePipe(i) {
+    const config = this.state.config;
+    const turns = [];
+    const turnCount = p.randIn(0, config.maxTurns);
+    const fullLength = p.randIn(config.minLength, config.maxLength);
+
+    for (let turn = 0; turn < turnCount; turn++) {
+      turns.push([p.randIn(0, fullLength), p.round(p.rand(1)) ? -1 : 1]);
+    }
+
+    const pipe = {
+      pipeId: i,
+      fullLength,
+      pipeRadius: p.randIn(config.minRadius, config.maxRadius),
+      speed: p.randIn(config.minSpeed, config.maxSpeed),
+      lifetime: p.randIn(config.minLifetime, config.maxLifeTime),
+      startPos: [p.randIn(config.minX, config.maxX), p.randIn(config.minY, config.maxY)],
+      startDirection: p.randIn(0, 8) * (p.PI / 4),
+      turns,
+    };
+
+    return pipe;
   }
 
   draw() {
