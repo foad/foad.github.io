@@ -83,6 +83,8 @@ export class HomeHeaderPipeline extends React.Component {
     const turns = [];
     const turnCount = p.randIn(config.minTurns, config.maxTurns);
     const fullLength = p.floor(p.randIn(config.minLength, config.maxLength));
+    const angle = p.PI / 4;
+    const allowedStartingDirections = [1, 2, 3, 5, 6, 7];
 
     for (let turn = 0; turn < turnCount; turn++) {
       turns.push([p.floor(p.randIn(0, fullLength)), p.round(p.rand(1)) ? -1 : 1]);
@@ -96,7 +98,7 @@ export class HomeHeaderPipeline extends React.Component {
       speed: p.randIn(config.minSpeed, config.maxSpeed),
       lifetime: p.randIn(config.minLifetime, config.maxLifeTime),
       startPos: [p.floor(p.randIn(config.minX, config.maxX)), p.floor(p.randIn(config.minY, config.maxY))],
-      startDirection: p.round(p.randIn(0, 8)) * (p.PI / 4),
+      startDirection: allowedStartingDirections[p.round(p.randIn(0, allowedStartingDirections.length))] * angle,
       baseOpacity: p.randIn(config.minOpacity, config.maxOpacity),
       turns,
     };
