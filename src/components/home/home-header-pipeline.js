@@ -48,8 +48,12 @@ export class HomeHeaderPipeline extends React.Component {
 
   setup() {
     return new Promise(resolve => {
-      const headerLeft = document.querySelector('.home-header__name').getBoundingClientRect().left - 128;
-      const rect = document.querySelector('.home-header').getBoundingClientRect();
+      const headerLeft =
+        document.querySelector('.home-header__name').getBoundingClientRect()
+          .left - 128;
+      const rect = document
+        .querySelector('.home-header')
+        .getBoundingClientRect();
       this.canvas.current.width = rect.width;
       this.canvas.current.height = rect.height;
       this.setState(
@@ -87,7 +91,10 @@ export class HomeHeaderPipeline extends React.Component {
     const allowedStartingDirections = [1, 2, 3, 5, 6, 7];
 
     for (let turn = 0; turn < turnCount; turn++) {
-      turns.push([p.floor(p.randIn(0, fullLength)), p.round(p.rand(1)) ? -1 : 1]);
+      turns.push([
+        p.floor(p.randIn(0, fullLength)),
+        p.round(p.rand(1)) ? -1 : 1,
+      ]);
     }
 
     const pipe = {
@@ -97,13 +104,28 @@ export class HomeHeaderPipeline extends React.Component {
       pipeRadius: p.round(p.randIn(config.minRadius, config.maxRadius)),
       speed: p.randIn(config.minSpeed, config.maxSpeed),
       lifetime: p.randIn(config.minLifetime, config.maxLifeTime),
-      startPos: [p.floor(p.randIn(config.minX, config.maxX)), p.floor(p.randIn(config.minY, config.maxY))],
-      startDirection: allowedStartingDirections[p.round(p.randIn(0, allowedStartingDirections.length))] * angle,
+      startPos: [
+        p.floor(p.randIn(config.minX, config.maxX)),
+        p.floor(p.randIn(config.minY, config.maxY)),
+      ],
+      startDirection:
+        allowedStartingDirections[
+          p.round(p.randIn(0, allowedStartingDirections.length))
+        ] * angle,
       baseOpacity: p.randIn(config.minOpacity, config.maxOpacity),
       turns,
     };
 
     return pipe;
+  }
+
+  isOutOfBounds(x, y) {
+    return (
+      x < 0 ||
+      x > this.canvas.current.width ||
+      y < 0 ||
+      y > this.canvas.current.height
+    );
   }
 
   draw(tick, ctx) {
@@ -153,18 +175,45 @@ export class HomeHeaderPipeline extends React.Component {
     let [x, y, direction] = [...pipe.startPos, pipe.startDirection];
 
     for (let i = 0; i < pipe.fullLength; i++) {
-      [x, y, direction] = this.renderArc(pipe, tick, i, ctx, x, y, direction, startFade, finalTick);
+      [x, y, direction] = this.renderArc(
+        pipe,
+        tick,
+        i,
+        ctx,
+        x,
+        y,
+        direction,
+        startFade,
+        finalTick
+      );
     }
   }
 
   renderArc(pipe, tick, i, ctx, x, y, direction, startFade) {
-    const startingOpacity = p.fadeInOut(i * pipe.speed, pipe.fullLength) * pipe.baseOpacity;
+    let newDirection = direction;
+    pipe.turns.forEach(t => {
+      if (i === t[0]) newDirection = direction + (p.PI / 4) * t[1];
+    });
+
+    const nextPosition = [
+      x + p.cos(newDirection),
+      y + p.sin(newDirection),
+      newDirection,
+    ];
+
+    if (this.isOutOfBounds(x, y)) return nextPosition;
+
+    const startingOpacity =
+      p.fadeInOut(i * pipe.speed, pipe.fullLength) * pipe.baseOpacity;
 
     let opacity = startingOpacity;
     if (tick - pipe.startingTick < i * pipe.speed) opacity = 0;
     if (tick >= startFade) {
       if (tick - startFade > i * pipe.speed) opacity = 0;
-      else opacity = p.fadeInOut(i * pipe.speed - tick + startFade, pipe.fullLength) * pipe.baseOpacity;
+      else
+        opacity =
+          p.fadeInOut(i * pipe.speed - tick + startFade, pipe.fullLength) *
+          pipe.baseOpacity;
     }
 
     ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
@@ -173,12 +222,7 @@ export class HomeHeaderPipeline extends React.Component {
     ctx.stroke();
     ctx.closePath();
 
-    let newDirection = direction;
-    pipe.turns.forEach(t => {
-      if (i === t[0]) newDirection = direction + (p.PI / 4) * t[1];
-    });
-
-    return [x + p.cos(newDirection), y + p.sin(newDirection), newDirection];
+    return nextPosition;
   }
 
   render() {
