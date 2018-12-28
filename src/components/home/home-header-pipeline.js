@@ -10,15 +10,16 @@ export class HomeHeaderPipeline extends React.Component {
     this.state = {
       config: {
         pipeCount: 15,
-        maxDelay: 200,
+        maxDelay: 100,
         minLength: 300,
         maxLength: 1000,
         minRadius: 2,
         maxRadius: 6,
         minSpeed: 0.75,
         maxSpeed: 0.3,
-        minLifetime: 0,
+        minLifetime: 10,
         maxLifeTime: 20,
+        pointLifetime: 15,
         minX: 0,
         maxX: 0,
         minY: 0,
@@ -44,9 +45,10 @@ export class HomeHeaderPipeline extends React.Component {
         this.draw(0, ctx);
       })
       .catch(() => {});
+    window.addEventListener('resize', this.setup);
   }
 
-  setup() {
+  setup = () => {
     return new Promise(resolve => {
       const headerLeft =
         document.querySelector('.home-header__name').getBoundingClientRect()
@@ -68,7 +70,7 @@ export class HomeHeaderPipeline extends React.Component {
         resolve
       );
     });
-  }
+  };
 
   generatePipes() {
     return new Promise(resolve => {
@@ -163,6 +165,7 @@ export class HomeHeaderPipeline extends React.Component {
 
     const fullyDrawn = pipe.startingTick + pipe.fullLength * pipe.speed;
     const startFade = fullyDrawn + pipe.lifetime;
+    const pointDone = fullyDrawn + this.state.config.pointLifetime;
     const finalTick = startFade + pipe.fullLength * pipe.speed;
 
     if (tick >= finalTick) {
@@ -175,6 +178,13 @@ export class HomeHeaderPipeline extends React.Component {
     let [x, y, direction] = [...pipe.startPos, pipe.startDirection];
 
     for (let i = 0; i < pipe.fullLength; i++) {
+      if (
+        i === pipe.fullLength - 1 &&
+        tick <= pointDone &&
+        tick >= fullyDrawn
+      ) {
+        this.renderPoint(pipe, tick, ctx, x, y, fullyDrawn);
+      }
       [x, y, direction] = this.renderArc(
         pipe,
         tick,
@@ -223,6 +233,27 @@ export class HomeHeaderPipeline extends React.Component {
     ctx.closePath();
 
     return nextPosition;
+  }
+
+  renderPoint(pipe, tick, ctx, x, y, fullyDrawn) {
+    const pointLifetime = this.state.config.pointLifetime;
+    let thickness = 1;
+    if (tick - fullyDrawn < pointLifetime / 2) {
+      const t = (tick - fullyDrawn) / (pointLifetime / 2);
+      thickness += pipe.pipeRadius * 10 * t * t * t;
+    } else {
+      const t = (fullyDrawn + pointLifetime - tick) / (pointLifetime / 2);
+      thickness += pipe.pipeRadius * 10 * t * t * t;
+    }
+
+    ctx.save();
+    ctx.lineWidth = thickness;
+    ctx.strokeStyle = `rgba(255, 255, 255, 0.9)`;
+    ctx.beginPath();
+    ctx.arc(x, y, pipe.pipeRadius, 0, p.TAU);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.restore();
   }
 
   render() {
