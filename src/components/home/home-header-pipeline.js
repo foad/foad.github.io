@@ -217,9 +217,9 @@ export class HomeHeaderPipeline extends React.Component {
       p.fadeInOut(i * pipe.speed, pipe.fullLength) * pipe.baseOpacity;
 
     let opacity = startingOpacity;
-    if (tick - pipe.startingTick < i * pipe.speed) opacity = 0;
+    if (tick - pipe.startingTick < i * pipe.speed) return nextPosition;
     if (tick >= startFade) {
-      if (tick - startFade > i * pipe.speed) opacity = 0;
+      if (tick - startFade > i * pipe.speed) return nextPosition;
       else
         opacity =
           p.fadeInOut(i * pipe.speed - tick + startFade, pipe.fullLength) *
