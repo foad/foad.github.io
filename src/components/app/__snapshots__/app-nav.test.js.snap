@@ -11,7 +11,11 @@ exports[`app-container should match snapshot 1`] = `
       href="/"
     >
       general.name
-       :: 
+      <span
+        className="separator"
+      >
+         :: 
+      </span>
       <span>
         general.role
       </span>
@@ -24,7 +28,7 @@ exports[`app-container should match snapshot 1`] = `
     className="main-nav__slant"
   />
   <div
-    className="main-nav__links--container"
+    className="main-nav__links--desktop"
   >
     <ul
       className="main-nav__links"
@@ -40,6 +44,19 @@ exports[`app-container should match snapshot 1`] = `
         app.nav.links
       </li>
     </ul>
+  </div>
+  <div
+    className="main-nav__links--mobile"
+  >
+    <div
+      className="main-nav__links--menu"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        src="/img/menu.png"
+      />
+    </div>
   </div>
 </nav>
 `;
