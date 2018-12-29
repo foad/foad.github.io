@@ -41,7 +41,7 @@ export class HomeHeaderPipeline extends React.Component {
         this.generatePipes();
       })
       .then(() => {
-        const ctx = this.canvas.current.getContext('2d');
+        const ctx = this.canvas.current.getContext('2d', { alpha: false });
         this.draw(0, ctx);
       })
       .catch(() => {});
