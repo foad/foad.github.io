@@ -237,20 +237,19 @@ export class HomeHeaderPipeline extends React.Component {
 
   renderPoint(pipe, tick, ctx, x, y, fullyDrawn) {
     const pointLifetime = this.state.config.pointLifetime;
-    let thickness = 1;
+    let radius = pipe.pipeRadius;
     if (tick - fullyDrawn < pointLifetime / 2) {
       const t = (tick - fullyDrawn) / (pointLifetime / 2);
-      thickness += pipe.pipeRadius * 10 * t * t * t;
+      radius += pipe.pipeRadius * 5 * t * t * t;
     } else {
       const t = (fullyDrawn + pointLifetime - tick) / (pointLifetime / 2);
-      thickness += pipe.pipeRadius * 10 * t * t * t;
+      radius += pipe.pipeRadius * 5 * t * t * t;
     }
 
     ctx.save();
-    ctx.lineWidth = thickness;
-    ctx.strokeStyle = `rgba(255, 255, 255, 0.9)`;
+    ctx.strokeStyle = `rgba(255, 231, 0, 0.9)`;
     ctx.beginPath();
-    ctx.arc(x, y, pipe.pipeRadius, 0, p.TAU);
+    ctx.arc(x, y, radius, 0, p.TAU);
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
