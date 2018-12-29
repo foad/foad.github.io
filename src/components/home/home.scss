@@ -42,8 +42,7 @@
 }
 .home-header__title {
   font-size: 1.2em;
-  position: relative;
-  top: 64px;
+  margin: 64px 0;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 .home-header__title h3 {
@@ -139,4 +138,20 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+@media all and (max-width: 1200px) {
+  .home-header__contents {
+    align-items: center;
+  }
+  .home-header__buttons {
+    position: static;
+    padding: 0;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .home-header__name {
+    font-size: 6em;
+  }
 }

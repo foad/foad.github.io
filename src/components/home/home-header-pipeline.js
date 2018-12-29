@@ -50,7 +50,7 @@ export class HomeHeaderPipeline extends React.Component {
 
   setup = () => {
     return new Promise(resolve => {
-      const headerLeft =
+      let headerLeft =
         document.querySelector('.home-header__name').getBoundingClientRect()
           .left - 128;
       const rect = document
@@ -58,6 +58,16 @@ export class HomeHeaderPipeline extends React.Component {
         .getBoundingClientRect();
       this.canvas.current.width = rect.width;
       this.canvas.current.height = rect.height;
+
+      let minOpacity = this.state.config.minOpacity;
+      let maxOpacity = this.state.config.maxOpacity;
+
+      if (rect.width <= 1200) {
+        headerLeft = rect.width;
+        minOpacity = 0.05;
+        maxOpacity = 0.15;
+      }
+
       this.setState(
         prevState => ({
           config: {
@@ -65,6 +75,8 @@ export class HomeHeaderPipeline extends React.Component {
             maxX: headerLeft,
             minY: 0 + this.canvas.current.height / 4,
             maxY: this.canvas.current.height - this.canvas.current.height / 4,
+            minOpacity,
+            maxOpacity,
           },
         }),
         resolve
