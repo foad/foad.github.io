@@ -57,6 +57,20 @@ exports[`app-container should match snapshot 1`] = `
         src="/img/menu.png"
       />
     </div>
+    <ul
+      className="main-nav__links "
+    >
+      <li
+        key="0"
+      >
+        <span
+          className="index"
+        >
+          01
+        </span>
+        app.nav.links
+      </li>
+    </ul>
   </div>
 </nav>
 `;

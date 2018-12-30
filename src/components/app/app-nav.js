@@ -8,6 +8,7 @@ export default class AppNav extends React.Component {
 
     this.state = {
       menuVisible: false,
+      menuClass: '',
     };
   }
 
@@ -43,8 +44,14 @@ export default class AppNav extends React.Component {
             <img src="/img/menu.png" alt="" />
           </div>
           {this.state.menuVisible && (
-            <ul className="main-nav__links">{this.getNavLinks()}</ul>
+            <div
+              className="main-nav__links--overlay"
+              onClick={this.toggleMenu}
+            />
           )}
+          <ul className={`main-nav__links ${this.state.menuClass}`}>
+            {this.getNavLinks()}
+          </ul>
         </div>
       </nav>
     );
@@ -53,6 +60,7 @@ export default class AppNav extends React.Component {
   toggleMenu = () => {
     this.setState(prevState => ({
       menuVisible: !prevState.menuVisible,
+      menuClass: prevState.menuClass.length === 0 ? 'open' : '',
     }));
   };
 
