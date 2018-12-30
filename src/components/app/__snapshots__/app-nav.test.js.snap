@@ -33,16 +33,19 @@ exports[`app-container should match snapshot 1`] = `
     <ul
       className="main-nav__links"
     >
-      <li
+      <a
+        href="#"
         key="0"
       >
-        <span
-          className="index"
-        >
-          01
-        </span>
-        app.nav.links
-      </li>
+        <li>
+          <span
+            className="index"
+          >
+            01
+          </span>
+          app.nav.links
+        </li>
+      </a>
     </ul>
   </div>
   <div
@@ -60,16 +63,19 @@ exports[`app-container should match snapshot 1`] = `
     <ul
       className="main-nav__links "
     >
-      <li
+      <a
+        href="#"
         key="0"
       >
-        <span
-          className="index"
-        >
-          01
-        </span>
-        app.nav.links
-      </li>
+        <li>
+          <span
+            className="index"
+          >
+            01
+          </span>
+          app.nav.links
+        </li>
+      </a>
     </ul>
   </div>
 </nav>

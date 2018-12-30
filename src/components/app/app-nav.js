@@ -16,10 +16,12 @@ export default class AppNav extends React.Component {
     const links = t('app.nav.links', true);
     return links.map((link, index) => {
       return (
-        <li key={index}>
-          <span className="index">{this.convertIndex(index)}</span>
-          {link}
-        </li>
+        <a href="#" key={index}>
+          <li>
+            <span className="index">{this.convertIndex(index)}</span>
+            {link}
+          </li>
+        </a>
       );
     });
   }
