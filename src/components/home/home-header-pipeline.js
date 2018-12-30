@@ -143,6 +143,7 @@ export class HomeHeaderPipeline extends React.Component {
   }
 
   draw(tick, ctx) {
+    if (!this.canvas.current) return;
     this.clearCanvas(ctx);
     this.renderPipes(tick, ctx);
 

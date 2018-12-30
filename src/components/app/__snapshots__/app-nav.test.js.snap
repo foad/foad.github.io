@@ -33,9 +33,10 @@ exports[`app-container should match snapshot 1`] = `
     <ul
       className="main-nav__links"
     >
-      <a
-        href="#"
+      <Link
         key="0"
+        replace={false}
+        to="/"
       >
         <li>
           <span
@@ -43,9 +44,65 @@ exports[`app-container should match snapshot 1`] = `
           >
             01
           </span>
-          app.nav.links
+          app.nav.links.home
         </li>
-      </a>
+      </Link>
+      <Link
+        key="1"
+        replace={false}
+        to="/projects/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            02
+          </span>
+          app.nav.links.projects
+        </li>
+      </Link>
+      <Link
+        key="2"
+        replace={false}
+        to="/cv/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            03
+          </span>
+          app.nav.links.cv
+        </li>
+      </Link>
+      <Link
+        key="3"
+        replace={false}
+        to="/blog/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            04
+          </span>
+          app.nav.links.blog
+        </li>
+      </Link>
+      <Link
+        key="4"
+        replace={false}
+        to="/contact-me/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            05
+          </span>
+          app.nav.links.contact
+        </li>
+      </Link>
     </ul>
   </div>
   <div
@@ -63,9 +120,10 @@ exports[`app-container should match snapshot 1`] = `
     <ul
       className="main-nav__links "
     >
-      <a
-        href="#"
+      <Link
         key="0"
+        replace={false}
+        to="/"
       >
         <li>
           <span
@@ -73,9 +131,65 @@ exports[`app-container should match snapshot 1`] = `
           >
             01
           </span>
-          app.nav.links
+          app.nav.links.home
         </li>
-      </a>
+      </Link>
+      <Link
+        key="1"
+        replace={false}
+        to="/projects/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            02
+          </span>
+          app.nav.links.projects
+        </li>
+      </Link>
+      <Link
+        key="2"
+        replace={false}
+        to="/cv/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            03
+          </span>
+          app.nav.links.cv
+        </li>
+      </Link>
+      <Link
+        key="3"
+        replace={false}
+        to="/blog/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            04
+          </span>
+          app.nav.links.blog
+        </li>
+      </Link>
+      <Link
+        key="4"
+        replace={false}
+        to="/contact-me/"
+      >
+        <li>
+          <span
+            className="index"
+          >
+            05
+          </span>
+          app.nav.links.contact
+        </li>
+      </Link>
     </ul>
   </div>
 </nav>

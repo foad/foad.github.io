@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { t } from '../../services/label-service';
-import AppNav from '../app/app-nav';
 
 import HomeHeaderPipeline from './home-header-pipeline';
 
@@ -30,7 +29,6 @@ export default class HomeHeader extends React.Component {
   render() {
     return (
       <header className="home-header">
-        <AppNav />
         {this.getHeader()}
         <HomeHeaderPipeline />
       </header>

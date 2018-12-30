@@ -10,19 +10,13 @@
 }
 body {
   font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
 }
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
-}
-
-/**** APP ****/
-.app {
-  width: 100%;
-  height: 100%;
-  font-family: 'Open Sans', sans-serif;
 }
 
 /**** NAV ****/
@@ -109,7 +103,7 @@ body,
   height: 100%;
   align-items: center;
   padding: 0 24px;
-  color: inherit;
+  color: #ffffff;
   text-decoration: none;
 }
 .main-nav__links li {

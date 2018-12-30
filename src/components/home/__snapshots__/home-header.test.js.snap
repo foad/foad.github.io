@@ -4,7 +4,6 @@ exports[`home-header should match snapshot 1`] = `
 <header
   className="home-header"
 >
-  <AppNav />
   <div
     className="home-header__contents"
   >

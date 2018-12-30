@@ -3,11 +3,13 @@ import { shallow } from 'enzyme';
 
 import { App } from './app';
 
+jest.mock('react-router-dom');
 jest.mock('../../containers/home/home-container', () => 'HomeContainer');
 
 describe('app-container', () => {
   const makeProps = extendProps => {
     return {
+      location: '/',
       labelsLoading: false,
       initLabels: jest.fn(),
       ...extendProps,
@@ -36,8 +38,8 @@ describe('app-container', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render the home container once labels are ready', () => {
+  it('should render the app once labels are ready', () => {
     renderContainer();
-    expect(wrapper.find('HomeContainer').length).toBe(1);
+    expect(wrapper).toMatchSnapshot();
   });
 });

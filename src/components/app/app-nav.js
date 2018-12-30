@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { t } from '../../services/label-service';
 
@@ -9,19 +10,26 @@ export default class AppNav extends React.Component {
     this.state = {
       menuVisible: false,
       menuClass: '',
+      links: {
+        'app.nav.links.home': '/',
+        'app.nav.links.projects': '/projects/',
+        'app.nav.links.cv': '/cv/',
+        'app.nav.links.blog': '/blog/',
+        'app.nav.links.contact': '/contact-me/',
+      },
     };
   }
 
   getNavLinks() {
-    const links = t('app.nav.links', true);
+    const links = Object.keys(this.state.links).map(l => t(l));
     return links.map((link, index) => {
       return (
-        <a href="#" key={index}>
+        <Link to={Object.values(this.state.links)[index] || '#'} key={index}>
           <li>
             <span className="index">{this.convertIndex(index)}</span>
             {link}
           </li>
-        </a>
+        </Link>
       );
     });
   }
