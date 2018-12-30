@@ -3,6 +3,18 @@ let allLabels;
 // TODO: Replace with request util + config
 const labelURI = 'http://localhost:5000/labels';
 
+const mockLabels = {
+  'general.name': 'Dan Foad',
+  'general.role': 'Associate Software Developer',
+  'home.header.subline': 'Currently working with NowTV',
+  'home.header.contact': 'Contact Me',
+  'app.nav.links.home': 'Home',
+  'app.nav.links.projects': 'Projects',
+  'app.nav.links.cv': 'CV',
+  'app.nav.links.blog': 'Blog',
+  'app.nav.links.contact': 'Contact Me',
+};
+
 const t = (label, startsWith = false) => {
   if (!startsWith) return allLabels[label];
 
@@ -12,11 +24,11 @@ const t = (label, startsWith = false) => {
 };
 
 const getLabels = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     fetch(labelURI)
       .then(response => response.json())
       .then(data => resolve(data.labels))
-      .catch(error => reject(error));
+      .catch(() => resolve(mockLabels));
   });
 };
 
