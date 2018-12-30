@@ -9,7 +9,11 @@ jest.mock('../../containers/home/home-container', () => 'HomeContainer');
 describe('app-container', () => {
   const makeProps = extendProps => {
     return {
-      location: '/',
+      location: {
+        pathname: '/',
+        search: '',
+        hash: '',
+      },
       labelsLoading: false,
       initLabels: jest.fn(),
       ...extendProps,

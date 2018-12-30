@@ -18,20 +18,3 @@ exports[`app-container should render the app once labels are ready 1`] = `
   </Switch>
 </Fragment>
 `;
-
-exports[`app-container should render the home container once labels are ready 1`] = `
-<Fragment>
-  <AppNav />
-  <Switch>
-    <Route
-      component="HomeContainer"
-      exact={true}
-      path="/"
-    />
-    <Route
-      component={[Function]}
-      path="/cv"
-    />
-  </Switch>
-</Fragment>
-`;
