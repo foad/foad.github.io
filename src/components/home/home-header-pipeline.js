@@ -40,6 +40,7 @@ export class HomeHeaderPipeline extends React.Component {
       .then(() => {
         this.generatePipes();
       })
+      .catch(() => {})
       .then(() => {
         const ctx = this.canvas.current.getContext('2d', { alpha: false });
         this.draw(0, ctx);
@@ -49,7 +50,12 @@ export class HomeHeaderPipeline extends React.Component {
   }
 
   setup = () => {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
+      if (!this.canvas.current) {
+        reject();
+        return;
+      }
+
       let headerLeft =
         document.querySelector('.home-header__name').getBoundingClientRect()
           .left - 128;
