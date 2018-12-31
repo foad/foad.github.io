@@ -8,6 +8,7 @@ jest.mock('../../services/label-service');
 describe('app-container', () => {
   const makeProps = extendProps => {
     return {
+      transparentBackground: false,
       ...extendProps,
     };
   };

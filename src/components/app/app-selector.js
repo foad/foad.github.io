@@ -5,6 +5,7 @@ export const appSelector = createSelector(
   app => {
     return {
       labelsLoading: app.labelsLoading,
+      transparentNav: app.transparentNav,
     };
   }
 );

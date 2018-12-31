@@ -2,7 +2,7 @@
 
 exports[`app-container should match snapshot 1`] = `
 <nav
-  className="main-nav"
+  className="main-nav "
 >
   <h1
     className="main-nav__title"

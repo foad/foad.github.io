@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { t } from '../../services/label-service';
@@ -35,8 +36,12 @@ export default class AppNav extends React.Component {
   }
 
   getNavContents() {
+    const navClass = this.props.transparentBackground
+      ? 'main-nav--transparent'
+      : '';
+
     return (
-      <nav className="main-nav">
+      <nav className={`main-nav ${navClass}`}>
         <h1 className="main-nav__title">
           <a href="/">
             {t('general.name')}
@@ -82,3 +87,7 @@ export default class AppNav extends React.Component {
     return this.getNavContents();
   }
 }
+
+AppNav.propTypes = {
+  transparentBackground: PropTypes.bool,
+};

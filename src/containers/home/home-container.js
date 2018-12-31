@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { init } from '../../services/home-service';
+import { setTransparentNav } from '../../reducers/app-reducers';
 import '../../components/home/home.scss';
 import HomeHeader from '../../components/home/home-header';
 
 export class HomeContainer extends React.Component {
   componentDidMount() {
     this.props.init();
+    this.props.setTransparentNav(true);
   }
 
   render() {
@@ -22,11 +24,13 @@ export class HomeContainer extends React.Component {
 
 HomeContainer.propTypes = {
   init: PropTypes.func.isRequired,
+  setTransparentNav: PropTypes.func.isRequired,
 };
 
 export default connect(
   null,
   {
     init,
+    setTransparentNav,
   }
 )(HomeContainer);

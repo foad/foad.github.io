@@ -23,13 +23,19 @@ body,
 .main-nav {
   display: grid;
   grid-template-columns: [start] auto [header-start] 400px [header-slant] 48px [header-mid] 752px [header-end] auto [end];
-  height: 48px;
+  height: 64px;
   position: fixed;
-  top: 16px;
+  padding-top: 16px;
+  top: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
   z-index: 10;
+  background: rgba(14, 20, 23, 0.9);
+
+  &--transparent {
+    background: transparent;
+  }
 }
 .main-nav__title {
   border-bottom: 1px solid #ffffff;
@@ -154,14 +160,14 @@ body,
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding-right: 16px;
+    padding-right: 8px;
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
   }
 
   .main-nav__links--menu img {
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 24px;
   }
 
   .main-nav__links {

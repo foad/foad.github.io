@@ -7,6 +7,7 @@ describe('home-container', () => {
   const makeProps = extendProps => {
     return {
       init: jest.fn(),
+      setTransparentNav: jest.fn(),
       ...extendProps,
     };
   };
@@ -31,5 +32,10 @@ describe('home-container', () => {
   it('should call the home initialisation routine on mount', () => {
     renderContainer();
     expect(props.init.mock.calls.length).toBe(1);
+  });
+
+  it('should set the nav to transparent on mount', () => {
+    renderContainer();
+    expect(props.setTransparentNav.mock.calls.length).toBe(1);
   });
 });
