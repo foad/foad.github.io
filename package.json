@@ -101,7 +101,7 @@
       "mjs"
     ]
   },
-  "homepage": "https://danfoad.github.io/danfoad.co.uk/",
+  "homepage": "https://foad.dev",
   "babel": {
     "presets": [
       "react-app"
