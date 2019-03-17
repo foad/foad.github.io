@@ -12,6 +12,7 @@ import AppNav from './app-nav';
 import { appSelector } from './app-selector';
 
 import './app.scss';
+import '../../components/headers/headers.scss';
 
 export class App extends Component {
   componentDidMount() {

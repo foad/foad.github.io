@@ -5,14 +5,16 @@
   position: relative;
 }
 .home-header {
-  height: 100vh;
+  height: 75vh;
   align-self: stretch;
   color: #ffffff;
   display: flex;
   align-items: stretch;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(rgba(10,10,10,.2),rgba(0,0,0,.75)), repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, 0.4) 3px, rgba(0, 0, 0, 0.4) 3px);
+  background: linear-gradient(rgba(10,10,10,.2),rgba(0,0,0,.35)), repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, 0.4) 3px, rgba(0, 0, 0, 0.4) 3px);
+  border-bottom: 8px solid #545657;
+  position: relative;
 }
 .home-header__contents {
   width: 100%;
@@ -153,6 +155,9 @@
 }
 
 @media all and (max-width: 600px) {
+  .home-header {
+    height: 100vh;
+  }
   .home-header__name h1 {
     font-size: 6em;
   }

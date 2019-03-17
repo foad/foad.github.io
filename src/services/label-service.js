@@ -6,6 +6,7 @@ const labelURI = 'http://localhost:5000/labels';
 const mockLabels = {
   'general.name': 'Dan Foad',
   'general.role': 'Associate Software Developer',
+  'general.aboutMe': 'About Me',
   'home.header.subline': 'Currently working with NowTV',
   'home.header.contact': 'Contact Me',
   'app.nav.links.home': 'Home',

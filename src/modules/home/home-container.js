@@ -7,6 +7,7 @@ import { setTransparentNav } from '../../reducers/app-reducers';
 
 import './home.scss';
 import HomeHeader from './home-header';
+import AboutMe from './about-me';
 
 export class HomeContainer extends React.Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ export class HomeContainer extends React.Component {
     return (
       <div className="home-container">
         <HomeHeader />
+        <AboutMe />
       </div>
     );
   }

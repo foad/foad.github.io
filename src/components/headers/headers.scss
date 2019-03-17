@@ -1,0 +1,62 @@
+/**** HEADERS ****/
+.section-header {
+  $height: 48px;
+  $background: #293845;
+
+  position: relative;
+  height: $height;
+
+  &:before {
+    content: '';
+    height: $height;
+    width: 10000px;
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    bottom: 0;
+    background-color: $background;
+  }
+
+  h2 {
+    background-color: $background;
+    position: relative;
+    color: #FFFFFF;
+    height: 100%;
+    line-height: $height;
+    display: inline-block;
+    font-size: 2em;
+    letter-spacing: 2px;
+    font-family: 'Space Mono', monospace;
+    padding-right: 16px;
+
+    &:after {
+      content: '';
+      width: 0;
+      position: absolute;
+      right: -$height / 2;
+      bottom: 0;
+      border-bottom: $height solid transparent;
+      border-left: ($height / 2) solid $background; 
+    }
+  }
+
+  .highlight {
+    height: $height;
+    width: 20px;
+    position: absolute;
+    right: 16 + (-$height / 2);
+    bottom: 0;
+    z-index: -1;
+    background-color: #ffe600;
+
+    &:after {
+      content: '';
+      width: 0;
+      position: absolute;
+      right: -$height / 2;
+      bottom: 0;
+      border-bottom: $height solid transparent;
+      border-left: ($height / 2) solid #ffe600; 
+    }
+  }
+}

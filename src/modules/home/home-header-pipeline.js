@@ -9,7 +9,7 @@ export class HomeHeaderPipeline extends React.Component {
 
     this.state = {
       config: {
-        pipeCount: 15,
+        pipeCount: 8,
         maxDelay: 100,
         minLength: 300,
         maxLength: 1000,
@@ -26,8 +26,8 @@ export class HomeHeaderPipeline extends React.Component {
         maxY: 0,
         minTurns: 2,
         maxTurns: 8,
-        minOpacity: 0.25,
-        maxOpacity: 0.5,
+        minOpacity: 0.1,
+        maxOpacity: 0.25,
       },
       pipes: [],
     };
@@ -63,7 +63,7 @@ export class HomeHeaderPipeline extends React.Component {
         .querySelector('.home-header')
         .getBoundingClientRect();
       this.canvas.current.width = rect.width;
-      this.canvas.current.height = rect.height;
+      this.canvas.current.height = rect.height - 8;
 
       let minOpacity = this.state.config.minOpacity;
       let maxOpacity = this.state.config.maxOpacity;
