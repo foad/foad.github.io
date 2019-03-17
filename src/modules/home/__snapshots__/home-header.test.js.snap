@@ -7,11 +7,13 @@ exports[`home-header should match snapshot 1`] = `
   <div
     className="home-header__contents"
   >
-    <h1
+    <div
       className="home-header__name"
     >
-      general.name
-    </h1>
+      <h1>
+        general.name
+      </h1>
+    </div>
     <div
       className="home-header__title"
     >
