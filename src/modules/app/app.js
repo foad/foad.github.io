@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import { init as initLabels } from '../../services/label-service';
 import { setTransparentNav } from '../../reducers/app-reducers';
-import HomeContainer from '../../containers/home/home-container';
-import CVContainer from '../../containers/cv/cv-container';
+import HomeContainer from '../home/home-container';
+import CVContainer from '../cv/cv-container';
 
 import AppNav from './app-nav';
 import { appSelector } from './app-selector';

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { App } from './app';
 
 jest.mock('react-router-dom');
-jest.mock('../../containers/home/home-container', () => 'HomeContainer');
+jest.mock('../home/home-container', () => 'HomeContainer');
 
 describe('app-container', () => {
   const makeProps = extendProps => {

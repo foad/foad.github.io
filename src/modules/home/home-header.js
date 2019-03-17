@@ -8,7 +8,9 @@ export default class HomeHeader extends React.Component {
   getHeader() {
     return (
       <div className="home-header__contents">
-        <h1 className="home-header__name">{t('general.name')}</h1>
+        <div className="home-header__name">
+          <h1>{t('general.name')}</h1>
+        </div>
         <div className="home-header__title">
           <h3>
             <img className="home-header__logo" src="/img/skylogo.png" alt="" />

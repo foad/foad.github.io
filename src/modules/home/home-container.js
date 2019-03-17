@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 
 import { init } from '../../services/home-service';
 import { setTransparentNav } from '../../reducers/app-reducers';
-import '../../components/home/home.scss';
-import HomeHeader from '../../components/home/home-header';
+
+import './home.scss';
+import HomeHeader from './home-header';
 
 export class HomeContainer extends React.Component {
   componentDidMount() {
