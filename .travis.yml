@@ -17,5 +17,6 @@ deploy:
   target_branch: master
   committer_from_gh: true
   fqdn: https://foad.dev
+  keep-history: true
   on:
     branch: master
