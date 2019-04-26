@@ -160,7 +160,7 @@ export class HomeHeaderPipeline extends React.Component {
 
   clearCanvas(ctx) {
     ctx.save();
-    ctx.fillStyle = '#1e282e';
+    ctx.fillStyle = '#2E3440';
     ctx.fillRect(
       0,
       0,
@@ -245,7 +245,7 @@ export class HomeHeaderPipeline extends React.Component {
           pipe.baseOpacity;
     }
 
-    ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
+    ctx.strokeStyle = `rgba(236, 239, 244, ${opacity})`;
     ctx.beginPath();
     ctx.arc(x, y, pipe.pipeRadius, 0, p.TAU);
     ctx.stroke();
@@ -266,7 +266,7 @@ export class HomeHeaderPipeline extends React.Component {
     }
 
     ctx.save();
-    ctx.strokeStyle = `rgba(255, 231, 0, 0.9)`;
+    ctx.strokeStyle = `rgba(235, 203, 139, 0.9)`;
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, p.TAU);
     ctx.stroke();

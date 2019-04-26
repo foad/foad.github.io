@@ -1,3 +1,5 @@
+@import '../../index';
+
 /**** HOME ****/
 .home-container {
   display: flex;
@@ -5,20 +7,19 @@
   position: relative;
 }
 .home-header {
-  height: 75vh;
-  align-self: stretch;
-  color: #ffffff;
+  color: $light3;
   display: flex;
   align-items: stretch;
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(rgba(10,10,10,.2),rgba(0,0,0,.35)), repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, 0.4) 3px, rgba(0, 0, 0, 0.4) 3px);
-  border-bottom: 8px solid #545657;
+  border-bottom: 1px double $light3;
   position: relative;
 }
 .home-header__contents {
   width: 100%;
   max-width: 1200px;
+  padding: 128px 0;
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
@@ -26,7 +27,7 @@
 }
 .home-header__name {
   padding-left: 64px;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid $light3;
   position: relative;
 }
 .home-header__name:before {
@@ -36,7 +37,7 @@
   bottom: 0;
   width: 48px;
   height: 4px;
-  background-color: #ffffff;
+  background-color: $light3;
 }
 .home-header__name h1 {
   font-size: 10em;
@@ -47,13 +48,13 @@
 .home-header__title {
   font-size: 1.2em;
   margin: 64px 0;
-  border: 1px solid #545657;
+  border: 1px solid $dark4;
 }
 .home-header__title h3 {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  border-bottom: 1px solid #545657;
+  border-bottom: 1px solid $dark4;
   padding: 16px 16px;
   font-size: 1.4em;
   letter-spacing: 0.5px;
@@ -70,7 +71,7 @@
   padding: 12px 16px;
   font-weight: bold;
   text-transform: uppercase;
-  background-color: #545657;
+  background-color: $dark4;
 }
 .home-header__buttons {
   position: absolute;
@@ -85,8 +86,7 @@
 }
 .home-header__contact {
   border-radius: 0;
-  background: 0;
-  color: #222222;
+  color: $dark1;
   font-size: 1.5em;
   padding: 12px 48px;
   font-family: 'Space Mono', monospace;
@@ -97,7 +97,7 @@
   position: relative;
   align-items: center;
   border: 0;
-  background-color: #ffffff;
+  background-color: $light3;
 }
 .home-header__contact img {
   height: 16px;
@@ -121,7 +121,7 @@
   height: 100%;
   width: 8px;
   transition: width 0.2s;
-  background: #ffe600;
+  background: $yellow;
 }
 .home-header__contact:hover:before {
   width: 100%;
