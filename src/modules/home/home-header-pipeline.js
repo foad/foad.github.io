@@ -139,12 +139,12 @@ export class HomeHeaderPipeline extends React.Component {
     return pipe;
   }
 
-  isOutOfBounds(x, y) {
+  isOutOfBounds(x, y, pipeRadius) {
     return (
-      x < 0 ||
-      x > this.canvas.current.width ||
-      y < 0 ||
-      y > this.canvas.current.height
+      x + pipeRadius < 0 ||
+      x - pipeRadius > this.canvas.current.width ||
+      y + pipeRadius < 0 ||
+      y - pipeRadius > this.canvas.current.height
     );
   }
 
@@ -230,7 +230,7 @@ export class HomeHeaderPipeline extends React.Component {
       newDirection,
     ];
 
-    if (this.isOutOfBounds(x, y)) return nextPosition;
+    if (this.isOutOfBounds(x, y, pipe.pipeRadius)) return nextPosition;
 
     const startingOpacity =
       p.fadeInOut(i * pipe.speed, pipe.fullLength) * pipe.baseOpacity;
