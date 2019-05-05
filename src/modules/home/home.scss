@@ -13,7 +13,7 @@
   justify-content: center;
   overflow: hidden;
   background: linear-gradient(rgba(10,10,10,.2),rgba(0,0,0,.35)), repeating-linear-gradient(0, transparent, transparent 2px, rgba(0, 0, 0, 0.4) 3px, rgba(0, 0, 0, 0.4) 3px);
-  border-bottom: 1px double $light3;
+  border-bottom: 1px solid $light3;
   position: relative;
 }
 .home-header__contents {
