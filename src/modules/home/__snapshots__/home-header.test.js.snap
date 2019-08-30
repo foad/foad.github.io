@@ -46,6 +46,6 @@ exports[`home-header should match snapshot 1`] = `
       </button>
     </div>
   </div>
-  <Connect(HomeHeaderPipeline) />
+  <Connect(HomeHeaderPipelineComponent) />
 </header>
 `;

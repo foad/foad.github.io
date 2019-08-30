@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AppNav from './app-nav';
+import { AppNav } from './app-nav';
 
 jest.mock('../../services/label-service');
 
