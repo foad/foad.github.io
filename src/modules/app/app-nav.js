@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { t } from '../../services/label-service';
 
-export default class AppNav extends React.Component {
+export class AppNav extends React.Component {
   constructor(props) {
     super(props);
 

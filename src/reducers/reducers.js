@@ -1,3 +1,3 @@
-import app from './app-reducers';
+import { appReducers as app } from './app-reducers';
 
 export const reducers = { app };

@@ -5,6 +5,7 @@ exports[`home-container should match snapshot 1`] = `
   className="home-container"
 >
   <HomeHeader />
+  <FeaturedProject />
   <AboutMe />
 </div>
 `;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default class CVContainer extends React.Component {
+export class CV extends React.Component {
   render() {
     return (
-      <div className="cv-container">
+      <div className="cv-component">
         <h1>CV</h1>
       </div>
     );

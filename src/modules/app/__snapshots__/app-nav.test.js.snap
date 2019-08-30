@@ -10,14 +10,14 @@ exports[`app-container should match snapshot 1`] = `
     <a
       href="/"
     >
-      general.name
+      translated general.name
       <span
         className="separator"
       >
          :: 
       </span>
       <span>
-        general.role
+        translated general.role
       </span>
     </a>
     <div
@@ -44,7 +44,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             01
           </span>
-          app.nav.links.home
+          translated app.nav.links.home
         </li>
       </Link>
       <Link
@@ -58,7 +58,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             02
           </span>
-          app.nav.links.projects
+          translated app.nav.links.projects
         </li>
       </Link>
       <Link
@@ -72,7 +72,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             03
           </span>
-          app.nav.links.cv
+          translated app.nav.links.cv
         </li>
       </Link>
       <Link
@@ -86,7 +86,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             04
           </span>
-          app.nav.links.blog
+          translated app.nav.links.blog
         </li>
       </Link>
       <Link
@@ -100,7 +100,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             05
           </span>
-          app.nav.links.contact
+          translated app.nav.links.contact
         </li>
       </Link>
     </ul>
@@ -131,7 +131,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             01
           </span>
-          app.nav.links.home
+          translated app.nav.links.home
         </li>
       </Link>
       <Link
@@ -145,7 +145,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             02
           </span>
-          app.nav.links.projects
+          translated app.nav.links.projects
         </li>
       </Link>
       <Link
@@ -159,7 +159,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             03
           </span>
-          app.nav.links.cv
+          translated app.nav.links.cv
         </li>
       </Link>
       <Link
@@ -173,7 +173,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             04
           </span>
-          app.nav.links.blog
+          translated app.nav.links.blog
         </li>
       </Link>
       <Link
@@ -187,7 +187,7 @@ exports[`app-container should match snapshot 1`] = `
           >
             05
           </span>
-          app.nav.links.contact
+          translated app.nav.links.contact
         </li>
       </Link>
     </ul>

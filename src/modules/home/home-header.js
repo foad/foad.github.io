@@ -2,9 +2,9 @@ import React from 'react';
 
 import { t } from '../../services/label-service';
 
-import HomeHeaderPipeline from './home-header-pipeline';
+import { HomeHeaderPipeline } from './home-header-pipeline';
 
-export default class HomeHeader extends React.Component {
+export class HomeHeader extends React.Component {
   render() {
     return (
       <header className="home-header">

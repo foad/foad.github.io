@@ -3,11 +3,11 @@ import React from 'react';
 import { t } from '../../services/label-service';
 import { SectionHeader } from '../../components/headers/section-header';
 
-export class AboutMe extends React.Component {
+export class FeaturedProject extends React.Component {
   render() {
     return (
-      <section className="about-me section">
-        <SectionHeader>{t('general.aboutMe')}</SectionHeader>
+      <section className="featured-project section">
+        <SectionHeader>{t('general.featuredProject')}</SectionHeader>
       </section>
     );
   }

@@ -6,10 +6,11 @@ import { init } from '../../services/home-service';
 import { setTransparentNav } from '../../reducers/app-reducers';
 
 import './home.scss';
-import HomeHeader from './home-header';
-import AboutMe from './about-me';
+import { HomeHeader } from './home-header';
+import { FeaturedProject } from './featured-project';
+import { AboutMe } from './about-me';
 
-export class HomeContainer extends React.Component {
+class HomeComponent extends React.Component {
   componentDidMount() {
     this.props.init();
     this.props.setTransparentNav(true);
@@ -19,21 +20,22 @@ export class HomeContainer extends React.Component {
     return (
       <div className="home-container">
         <HomeHeader />
+        <FeaturedProject />
         <AboutMe />
       </div>
     );
   }
 }
 
-HomeContainer.propTypes = {
+HomeComponent.propTypes = {
   init: PropTypes.func.isRequired,
   setTransparentNav: PropTypes.func.isRequired,
 };
 
-export default connect(
+export const Home = connect(
   null,
   {
     init,
     setTransparentNav,
   }
-)(HomeContainer);
+)(HomeComponent);

@@ -19,7 +19,7 @@ export const setTransparentNav = isTransparent => {
   };
 };
 
-export default createReducer(initialState, {
+export const appReducers = createReducer(initialState, {
   [actions.LABELS_LOADING]: state => ({ ...state, labelsLoading: true }),
   [actions.LABELS_LOADED]: state => ({ ...state, labelsLoading: false }),
   [actions.SET_TRANSPARENT_NAV]: (state, isTransparent) => {

@@ -7,13 +7,14 @@ exports[`app-container should render the app once labels are ready 1`] = `
   <AppNav />
   <Switch>
     <Route
-      component="HomeContainer"
+      component={[Function]}
       exact={true}
       path="/"
     />
     <Route
       component={[Function]}
-      path="/cv"
+      exact={true}
+      path="/cv/"
     />
   </Switch>
 </Fragment>

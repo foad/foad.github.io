@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { pipelineUtils as p } from '../../utils/pipeline-utils';
 
-export class HomeHeaderPipeline extends React.Component {
+export class HomeHeaderPipelineComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -279,8 +279,8 @@ export class HomeHeaderPipeline extends React.Component {
   }
 }
 
-HomeHeaderPipeline.propTypes = {};
-export default connect(
+HomeHeaderPipelineComponent.propTypes = {};
+export const HomeHeaderPipeline = connect(
   null,
   null
-)(HomeHeaderPipeline);
+)(HomeHeaderPipelineComponent);

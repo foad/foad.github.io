@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 
 import { init as initLabels } from '../../services/label-service';
 import { setTransparentNav } from '../../reducers/app-reducers';
-import HomeContainer from '../home/home-container';
-import CVContainer from '../cv/cv-container';
+import { Home } from '../home/home-component';
+import { CV } from '../cv/cv-component';
 
-import AppNav from './app-nav';
+import { AppNav } from './app-nav';
 import { appSelector } from './app-selector';
 
 import './app.scss';
 import '../../components/headers/headers.scss';
 
-export class App extends Component {
+class AppComponent extends Component {
   componentDidMount() {
     this.props.initLabels();
   }
@@ -32,15 +32,15 @@ export class App extends Component {
       <React.Fragment>
         <AppNav transparentBackground={this.props.transparentNav} />
         <Switch>
-          <Route exact path="/" component={HomeContainer} />
-          <Route path="/cv" component={CVContainer} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/cv/" component={CV} />
         </Switch>
       </React.Fragment>
     );
   }
 }
 
-App.propTypes = {
+AppComponent.propTypes = {
   labelsLoading: PropTypes.bool,
   initLabels: PropTypes.func.isRequired,
   transparentNav: PropTypes.bool,
@@ -53,10 +53,10 @@ App.propTypes = {
   }).isRequired,
 };
 
-export default connect(
+export const App = connect(
   appSelector,
   {
     initLabels,
     setTransparentNav,
   }
-)(App);
+)(AppComponent);

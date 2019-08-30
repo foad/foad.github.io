@@ -7,6 +7,7 @@ const mockLabels = {
   'general.name': 'Dan Foad',
   'general.role': 'Associate Software Developer',
   'general.aboutMe': 'About Me',
+  'general.featuredProject': 'Featured Project',
   'home.header.subline': 'Currently working with NowTV',
   'home.header.contact': 'Contact Me',
   'app.nav.links.home': 'Home',
