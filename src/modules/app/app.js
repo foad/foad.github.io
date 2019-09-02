@@ -30,7 +30,11 @@ class AppComponent extends Component {
 
     return (
       <React.Fragment>
-        <AppNav transparentBackground={this.props.transparentNav} />
+        <AppNav
+          navLinks={this.props.navLinks}
+          expanded={this.props.navExpanded}
+          transparentBackground={this.props.transparentNav}
+        />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/cv/" component={CV} />
@@ -43,6 +47,8 @@ class AppComponent extends Component {
 AppComponent.propTypes = {
   labelsLoading: PropTypes.bool,
   initLabels: PropTypes.func.isRequired,
+  navExpanded: PropTypes.bool.isRequired,
+  navLinks: PropTypes.objectOf(PropTypes.string).isRequired,
   transparentNav: PropTypes.bool,
   setTransparentNav: PropTypes.func.isRequired,
   location: PropTypes.shape({

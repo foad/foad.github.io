@@ -18,6 +18,10 @@ describe('app-container', () => {
         hash: '',
       },
       labelsLoading: false,
+      navExpanded: false,
+      navLinks: {
+        'app.nav.links.home': '/',
+      },
       initLabels: jest.fn(),
       setTransparentNav: jest.fn(),
     };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`app-container should match snapshot 1`] = `
+exports[`app-container should render correctly 1`] = `
 <nav
   className="main-nav "
 >
@@ -47,62 +47,6 @@ exports[`app-container should match snapshot 1`] = `
           translated app.nav.links.home
         </li>
       </Link>
-      <Link
-        key="1"
-        replace={false}
-        to="/projects/"
-      >
-        <li>
-          <span
-            className="index"
-          >
-            02
-          </span>
-          translated app.nav.links.projects
-        </li>
-      </Link>
-      <Link
-        key="2"
-        replace={false}
-        to="/cv/"
-      >
-        <li>
-          <span
-            className="index"
-          >
-            03
-          </span>
-          translated app.nav.links.cv
-        </li>
-      </Link>
-      <Link
-        key="3"
-        replace={false}
-        to="/blog/"
-      >
-        <li>
-          <span
-            className="index"
-          >
-            04
-          </span>
-          translated app.nav.links.blog
-        </li>
-      </Link>
-      <Link
-        key="4"
-        replace={false}
-        to="/contact-me/"
-      >
-        <li>
-          <span
-            className="index"
-          >
-            05
-          </span>
-          translated app.nav.links.contact
-        </li>
-      </Link>
     </ul>
   </div>
   <div
@@ -134,60 +78,174 @@ exports[`app-container should match snapshot 1`] = `
           translated app.nav.links.home
         </li>
       </Link>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`app-container should render correctly when expanded 1`] = `
+<nav
+  className="main-nav "
+>
+  <h1
+    className="main-nav__title"
+  >
+    <a
+      href="/"
+    >
+      translated general.name
+      <span
+        className="separator"
+      >
+         :: 
+      </span>
+      <span>
+        translated general.role
+      </span>
+    </a>
+    <div
+      className="main-nav__edge"
+    />
+  </h1>
+  <div
+    className="main-nav__slant"
+  />
+  <div
+    className="main-nav__links--desktop"
+  >
+    <ul
+      className="main-nav__links"
+    >
       <Link
-        key="1"
+        key="0"
         replace={false}
-        to="/projects/"
+        to="/"
       >
         <li>
           <span
             className="index"
           >
-            02
+            01
           </span>
-          translated app.nav.links.projects
+          translated app.nav.links.home
         </li>
       </Link>
+    </ul>
+  </div>
+  <div
+    className="main-nav__links--mobile"
+  >
+    <div
+      className="main-nav__links--menu"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        src="/img/menu.png"
+      />
+    </div>
+    <div
+      className="main-nav__links--overlay"
+      onClick={[Function]}
+    />
+    <ul
+      className="main-nav__links open"
+    >
       <Link
-        key="2"
+        key="0"
         replace={false}
-        to="/cv/"
+        to="/"
       >
         <li>
           <span
             className="index"
           >
-            03
+            01
           </span>
-          translated app.nav.links.cv
+          translated app.nav.links.home
         </li>
       </Link>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`app-container should render correctly with a transparent background 1`] = `
+<nav
+  className="main-nav main-nav--transparent"
+>
+  <h1
+    className="main-nav__title"
+  >
+    <a
+      href="/"
+    >
+      translated general.name
+      <span
+        className="separator"
+      >
+         :: 
+      </span>
+      <span>
+        translated general.role
+      </span>
+    </a>
+    <div
+      className="main-nav__edge"
+    />
+  </h1>
+  <div
+    className="main-nav__slant"
+  />
+  <div
+    className="main-nav__links--desktop"
+  >
+    <ul
+      className="main-nav__links"
+    >
       <Link
-        key="3"
+        key="0"
         replace={false}
-        to="/blog/"
+        to="/"
       >
         <li>
           <span
             className="index"
           >
-            04
+            01
           </span>
-          translated app.nav.links.blog
+          translated app.nav.links.home
         </li>
       </Link>
+    </ul>
+  </div>
+  <div
+    className="main-nav__links--mobile"
+  >
+    <div
+      className="main-nav__links--menu"
+      onClick={[Function]}
+    >
+      <img
+        alt=""
+        src="/img/menu.png"
+      />
+    </div>
+    <ul
+      className="main-nav__links "
+    >
       <Link
-        key="4"
+        key="0"
         replace={false}
-        to="/contact-me/"
+        to="/"
       >
         <li>
           <span
             className="index"
           >
-            05
+            01
           </span>
-          translated app.nav.links.contact
+          translated app.nav.links.home
         </li>
       </Link>
     </ul>
