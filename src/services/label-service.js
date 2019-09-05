@@ -1,7 +1,7 @@
 let allLabels;
 
 // TODO: Replace with request util + config
-// const labelURI = 'http://localhost:5000/labels';
+const labelURI = 'http://157.245.33.244/api/labels';
 
 const mockLabels = {
   'general.name': 'Dan Foad',
@@ -28,10 +28,10 @@ const t = (label, startsWith = false) => {
 const getLabels = () => {
   return new Promise(resolve => {
     resolve(mockLabels);
-    // fetch(labelURI)
-    //   .then(response => response.json())
-    //   .then(data => resolve(data.labels))
-    //   .catch(() => resolve(mockLabels));
+    fetch(labelURI)
+      .then(response => response.json())
+      .then(data => resolve(data.labels))
+      .catch(() => resolve(mockLabels));
   });
 };
 
