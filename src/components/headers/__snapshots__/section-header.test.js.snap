@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`section-header should match snapshot for element as child 1`] = `
+<div
+  className="section-header"
+>
+  <h2>
+    <span>
+      Test
+    </span>
+  </h2>
+</div>
+`;
+
+exports[`section-header should match snapshot for string as child 1`] = `
+<div
+  className="section-header"
+>
+  <h2>
+    Test
+  </h2>
+</div>
+`;

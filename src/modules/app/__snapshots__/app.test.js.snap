@@ -4,7 +4,14 @@ exports[`app-container should render an empty div if labels still loading 1`] = 
 
 exports[`app-container should render the app once labels are ready 1`] = `
 <Fragment>
-  <AppNav />
+  <Connect(AppNavComponent)
+    expanded={false}
+    navLinks={
+      Object {
+        "app.nav.links.home": "/",
+      }
+    }
+  />
   <Switch>
     <Route
       component={[Function]}

@@ -1,31 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { toggleMenu } from '../../reducers/app-reducers';
 import { t } from '../../services/label-service';
 
-export class AppNav extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      menuVisible: false,
-      menuClass: '',
-      links: {
-        'app.nav.links.home': '/',
-        'app.nav.links.projects': '/projects/',
-        'app.nav.links.cv': '/cv/',
-        'app.nav.links.blog': '/blog/',
-        'app.nav.links.contact': '/contact-me/',
-      },
-    };
-  }
-
+class AppNavComponent extends React.Component {
   getNavLinks() {
-    const links = Object.keys(this.state.links).map(l => t(l));
+    const links = Object.keys(this.props.navLinks).map(l => t(l));
     return links.map((link, index) => {
       return (
-        <Link to={Object.values(this.state.links)[index] || '#'} key={index}>
+        <Link to={Object.values(this.props.navLinks)[index] || '#'} key={index}>
           <li>
             <span className="index">{this.convertIndex(index)}</span>
             {link}
@@ -55,29 +41,27 @@ export class AppNav extends React.Component {
           <ul className="main-nav__links">{this.getNavLinks()}</ul>
         </div>
         <div className="main-nav__links--mobile">
-          <div className="main-nav__links--menu" onClick={this.toggleMenu}>
+          <div
+            className="main-nav__links--menu"
+            onClick={this.props.toggleMenu}
+          >
             <img src="/img/menu.png" alt="" />
           </div>
-          {this.state.menuVisible && (
+          {this.props.expanded && (
             <div
               className="main-nav__links--overlay"
-              onClick={this.toggleMenu}
+              onClick={this.props.toggleMenu}
             />
           )}
-          <ul className={`main-nav__links ${this.state.menuClass}`}>
+          <ul
+            className={`main-nav__links ${this.props.expanded ? 'open' : ''}`}
+          >
             {this.getNavLinks()}
           </ul>
         </div>
       </nav>
     );
   }
-
-  toggleMenu = () => {
-    this.setState(prevState => ({
-      menuVisible: !prevState.menuVisible,
-      menuClass: prevState.menuClass.length === 0 ? 'open' : '',
-    }));
-  };
 
   convertIndex(index) {
     return index < 9 ? `0${index + 1}` : index + 1;
@@ -88,6 +72,16 @@ export class AppNav extends React.Component {
   }
 }
 
-AppNav.propTypes = {
-  transparentBackground: PropTypes.bool,
+AppNavComponent.propTypes = {
+  expanded: PropTypes.bool.isRequired,
+  navLinks: PropTypes.objectOf(PropTypes.string),
+  toggleMenu: PropTypes.func.isRequired,
+  transparentBackground: PropTypes.bool.isRequired,
 };
+
+export const AppNav = connect(
+  null,
+  {
+    toggleMenu,
+  }
+)(AppNavComponent);
