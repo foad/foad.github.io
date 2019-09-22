@@ -67,7 +67,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/config/enzyme-config.js",
+    "setupFilesAfterEnv": ["<rootDir>/config/enzyme-config.js"],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "<rootDir>/test/jest.setup.js"

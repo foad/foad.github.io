@@ -54,7 +54,7 @@ exports[`app-container should render correctly 1`] = `
   >
     <div
       className="main-nav__links--menu"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       <img
         alt=""
@@ -137,7 +137,7 @@ exports[`app-container should render correctly when expanded 1`] = `
   >
     <div
       className="main-nav__links--menu"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       <img
         alt=""
@@ -146,7 +146,7 @@ exports[`app-container should render correctly when expanded 1`] = `
     </div>
     <div
       className="main-nav__links--overlay"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     />
     <ul
       className="main-nav__links open"
@@ -224,7 +224,7 @@ exports[`app-container should render correctly with a transparent background 1`]
   >
     <div
       className="main-nav__links--menu"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       <img
         alt=""
