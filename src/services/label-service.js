@@ -5,7 +5,7 @@ const labelURI = 'http://157.245.33.244/api/labels';
 
 const mockLabels = {
   'general.name': 'Dan Foad',
-  'general.role': 'Associate Software Developer',
+  'general.role': 'Software Developer',
   'general.aboutMe': 'About Me',
   'general.featuredProject': 'Featured Project',
   'home.header.subline': 'Currently working with NowTV',
