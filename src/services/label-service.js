@@ -27,7 +27,6 @@ const t = (label, startsWith = false) => {
 
 const getLabels = () => {
   return new Promise(resolve => {
-    resolve(mockLabels);
     fetch(labelURI)
       .then(response => response.json())
       .then(data => resolve(data.labels))
