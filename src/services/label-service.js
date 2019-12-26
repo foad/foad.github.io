@@ -1,7 +1,7 @@
 let allLabels;
 
 // TODO: Replace with request util + config
-const labelURI = 'https://backend.foad.dev/api/v1/labels/';
+const labelURI = 'https://backend.foad.dev/api/v1/labels';
 
 const mockLabels = {
   'general.name': 'Dan Foad',
