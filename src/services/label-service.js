@@ -28,8 +28,7 @@ const t = (label, startsWith = false) => {
 const getLabels = () => {
   return new Promise(resolve => {
     fetch(labelURI)
-      .then(response => response.json())
-      .then(data => resolve(data.labels))
+      .then(response => resolve(response.json()))
       .catch(() => resolve(mockLabels));
   });
 };
