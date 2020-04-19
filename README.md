@@ -1,5 +1,6 @@
 # foad.dev
 
-[![Build Status](https://travis-ci.com/foad/foad.dev.svg?branch=master)](https://travis-ci.com/foad/foad.dev)
+![Test](https://github.com/foad/foad.dev/workflows/Test/badge.svg)
+![Build & Deploy](https://github.com/foad/foad.dev/workflows/Build%20&%20Deploy/badge.svg)
 
 Repo for my website
