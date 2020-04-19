@@ -10,7 +10,7 @@ describe('home-container', () => {
 
   beforeEach(() => {
     props = {
-      init: jest.fn(),
+      setFeaturedProject: jest.fn(),
       setTransparentNav: jest.fn(),
     };
   });
@@ -19,13 +19,13 @@ describe('home-container', () => {
     expect(shallow(<Home {...props} />)).toMatchSnapshot();
   });
 
-  it('should call the home initialisation routine on mount', () => {
+  it('should set the featured project on mount', () => {
     shallow(<Home {...props} />);
-    expect(props.init.mock.calls.length).toBe(1);
+    expect(props.setFeaturedProject).toHaveBeenCalledTimes(1);
   });
 
   it('should set the nav to transparent on mount', () => {
     shallow(<Home {...props} />);
-    expect(props.setTransparentNav.mock.calls.length).toBe(1);
+    expect(props.setTransparentNav).toHaveBeenCalledTimes(1);
   });
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { init } from '../../services/home-service';
+import { setFeaturedProject } from '../../reducers/home-reducers';
 import { setTransparentNav } from '../../reducers/app-reducers';
 
 import './home.scss';
@@ -12,7 +12,7 @@ import { AboutMe } from './about-me';
 
 class HomeComponent extends React.Component {
   componentDidMount() {
-    this.props.init();
+    this.props.setFeaturedProject();
     this.props.setTransparentNav(true);
   }
 
@@ -28,14 +28,14 @@ class HomeComponent extends React.Component {
 }
 
 HomeComponent.propTypes = {
-  init: PropTypes.func.isRequired,
+  setFeaturedProject: PropTypes.func.isRequired,
   setTransparentNav: PropTypes.func.isRequired,
 };
 
 export const Home = connect(
   null,
   {
-    init,
+    setFeaturedProject,
     setTransparentNav,
   }
 )(HomeComponent);
