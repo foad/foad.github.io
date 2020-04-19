@@ -1,0 +1,24 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download dependencies
+      run: yarn
+    - name: Build
+      run: yarn build
+    - name: Deploy
+      uses: crazy-max/ghaction-github-pages@v1.4.0
+      with:
+        repo: foad/foad.github.io
+        target_branch: master
+        keep_history: true
+        build_dir: build
+        committer_name: Dan Foad
+        committer_email: danielfoad@gmail.com
+        fqdn: https://foad.dev
