@@ -13,6 +13,7 @@ jobs:
     - name: Build
       run: yarn build
     - name: Deploy
+      if: success()
       uses: crazy-max/ghaction-github-pages@v1.4.0
       with:
         repo: foad/foad.github.io
@@ -22,3 +23,5 @@ jobs:
         committer_name: Dan Foad
         committer_email: danielfoad@gmail.com
         fqdn: https://foad.dev
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
