@@ -27,6 +27,7 @@ class FeaturedProjectComponent extends React.Component {
 
     return (
       <div className="featured-project__container">
+        <img className="featured-project__img" src={`/img/${project.img}`} />
         <div className="featured-project__details">
           <div>
             {title}
@@ -36,7 +37,6 @@ class FeaturedProjectComponent extends React.Component {
             <div className="featured-project__technologies">{technologies}</div>
           </div>
         </div>
-        <img className="featured-project__img" src={`/img/${project.img}`} />
       </div>
     );
   };
