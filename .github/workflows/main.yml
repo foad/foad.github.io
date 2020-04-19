@@ -24,4 +24,4 @@ jobs:
         committer_email: danielfoad@gmail.com
         fqdn: https://foad.dev
       env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        GITHUB_PAT: ${{ secrets.PAT }}
