@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { t } from '../../services/label-service';
-
 import { HomeHeaderPipeline } from './home-header-pipeline';
 
 export class HomeHeader extends React.Component {
@@ -10,7 +8,7 @@ export class HomeHeader extends React.Component {
       <header className="home-header">
         <div className="home-header__contents">
           <div className="home-header__name">
-            <h1>{t('general.name')}</h1>
+            <h1>Dan Foad</h1>
           </div>
           <div className="home-header__title">
             <h3>
@@ -19,14 +17,14 @@ export class HomeHeader extends React.Component {
                 src="/img/skylogo.png"
                 alt=""
               />
-              {t('general.role')}
+              Software Engineering Manager
             </h3>
-            <p>{t('home.header.subline')}</p>
+            <p>Currently working with NOW TV</p>
           </div>
           <div className="home-header__buttons">
             <button className="home-header__contact" type="button">
               <img src="/img/contact.png" alt="" />
-              <span>{t('home.header.contact')}</span>
+              <span>Contact Me</span>
             </button>
           </div>
         </div>

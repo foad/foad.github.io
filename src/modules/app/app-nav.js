@@ -4,19 +4,34 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { toggleMenu } from '../../reducers/app-reducers';
-import { t } from '../../services/label-service';
 
 class AppNavComponent extends React.Component {
   getNavLinks() {
-    const links = Object.keys(this.props.navLinks).map(l => t(l));
-    return links.map((link, index) => {
+    const links = {
+      Home: '/',
+      Projects: '/projects/',
+      CV: 'https://github.com/foad/foad.dev/raw/master/public/CV.pdf',
+      LinkedIn: 'https://uk.linkedin.com/in/danfoad',
+      'Contact Me': '/contact-me/',
+    };
+    return Object.entries(links).map(([title, uri], index) => {
+      if (uri[0] === '/') {
+        return (
+          <Link to={uri} key={uri}>
+            <li>
+              <span className="index">{this.convertIndex(index)}</span>
+              {title}
+            </li>
+          </Link>
+        );
+      }
       return (
-        <Link to={Object.values(this.props.navLinks)[index] || '#'} key={index}>
+        <a href={uri} key={uri}>
           <li>
             <span className="index">{this.convertIndex(index)}</span>
-            {link}
+            {title}
           </li>
-        </Link>
+        </a>
       );
     });
   }
@@ -30,9 +45,9 @@ class AppNavComponent extends React.Component {
       <nav className={`main-nav ${navClass}`}>
         <h1 className="main-nav__title">
           <a href="/">
-            {t('general.name')}
+            Dan Foad
             <span className="separator"> :: </span>
-            <span>{t('general.role')}</span>
+            <span>Engineering Manager</span>
           </a>
           <div className="main-nav__edge" />
         </h1>
@@ -74,7 +89,6 @@ class AppNavComponent extends React.Component {
 
 AppNavComponent.propTypes = {
   expanded: PropTypes.bool.isRequired,
-  navLinks: PropTypes.objectOf(PropTypes.string),
   toggleMenu: PropTypes.func.isRequired,
   transparentBackground: PropTypes.bool.isRequired,
 };
