@@ -12,8 +12,5 @@ if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
 
 export const store = createStore(
   reducer,
-  compose(
-    applyMiddleware(thunk),
-    devtools
-  )
+  compose(applyMiddleware(thunk), devtools)
 );

@@ -68,7 +68,7 @@ export class HomeHeaderPipelineComponent extends React.Component {
       let minOpacity = this.state.config.minOpacity;
       let maxOpacity = this.state.config.maxOpacity;
 
-      if (rect.width <= 1200) {
+      if (rect.width <= 1280) {
         headerLeft = rect.width;
         minOpacity = 0.05;
         maxOpacity = 0.15;

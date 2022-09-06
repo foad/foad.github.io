@@ -93,9 +93,6 @@ AppNavComponent.propTypes = {
   transparentBackground: PropTypes.bool.isRequired,
 };
 
-export const AppNav = connect(
-  null,
-  {
-    toggleMenu,
-  }
-)(AppNavComponent);
+export const AppNav = connect(null, {
+  toggleMenu,
+})(AppNavComponent);

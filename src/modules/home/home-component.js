@@ -25,9 +25,6 @@ HomeComponent.propTypes = {
   setTransparentNav: PropTypes.func.isRequired,
 };
 
-export const Home = connect(
-  null,
-  {
-    setTransparentNav,
-  }
-)(HomeComponent);
+export const Home = connect(null, {
+  setTransparentNav,
+})(HomeComponent);

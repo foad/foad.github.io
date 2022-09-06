@@ -5,10 +5,12 @@
   display: flex;
   flex-flow: column nowrap;
   position: relative;
+  height: 100vh;
 }
 .home-header {
   color: $light3;
   display: flex;
+  flex: 1;
   align-items: stretch;
   justify-content: center;
   overflow: hidden;
@@ -18,7 +20,7 @@
 }
 .home-header__contents {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   padding: 128px 0;
   display: flex;
   flex-flow: column nowrap;
@@ -40,7 +42,7 @@
   background-color: $light3;
 }
 .home-header__name h1 {
-  font-size: 10em;
+  font-size: 12em;
   font-weight: 200;
   line-height: 1.1em;
   text-align: right;
@@ -145,6 +147,9 @@
 }
 
 @media all and (max-width: 1200px) {
+  .home-header__name h1 {
+    font-size: 10em;
+  }
   .home-header__contents {
     align-items: center;
   }

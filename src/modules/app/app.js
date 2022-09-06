@@ -46,9 +46,6 @@ AppComponent.propTypes = {
   }).isRequired,
 };
 
-export const App = connect(
-  appSelector,
-  {
-    setTransparentNav,
-  }
-)(AppComponent);
+export const App = connect(appSelector, {
+  setTransparentNav,
+})(AppComponent);
