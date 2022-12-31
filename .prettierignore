@@ -1,8 +1,0 @@
-package.json
-**/widgets/**/*.json
-*.md
-*.ejs
-*.scss
-stats.json
-.lintstagedrc.json
-dist
