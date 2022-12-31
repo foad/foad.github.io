@@ -20,8 +20,9 @@ jobs:
           target_branch: master
           keep_history: true
           build_dir: build
-          committer_name: Dan Foad
-          committer_email: dan@foad.dev
+          committer: Dan Foad <dan@foad.dev>
+          author: Dan Foad <dan@foad.dev>
           fqdn: https://foad.dev
+          verbose: true
         env:
           GH_PAT: ${{ secrets.PAT }}
