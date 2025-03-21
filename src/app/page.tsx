@@ -1,6 +1,6 @@
 import { Title } from "./components/title";
 import { Panel } from "./components/panel";
-import { Contour } from "./components/visual";
+import { Contour, Sunburst } from "./components/visual";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,6 +15,7 @@ export default function Home() {
             <Title variant="secondary" subtitle="active">
               Unit 01
             </Title>
+            <Sunburst />
           </Panel>
         </div>
       </main>
