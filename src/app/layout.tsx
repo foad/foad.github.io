@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Chakra_Petch } from "next/font/google";
 import "./globals.css";
+
+const chakraPetch = Chakra_Petch({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "foad.dev",
@@ -13,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={chakraPetch.className}>{children}</body>
     </html>
   );
 }
