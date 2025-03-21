@@ -4,6 +4,7 @@
   --main: #33595e;
   --main-light: #74adb4;
   --grey: #ddd7c5;
+  --title-background: #31343a;
 }
 
 @media (prefers-color-scheme: dark) {

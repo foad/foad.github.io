@@ -3,7 +3,7 @@
   font-weight: bold;
   color: var(--main-light);
   text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--title-background);
   padding: 0.1em 1.2em;
 }
 
@@ -12,7 +12,7 @@
   font-weight: bold;
   color: var(--main-light);
   text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--title-background);
   padding: 0.1em 1.2em;
   width: 100%;
   text-align: left;
