@@ -1,0 +1,37 @@
+.graphs {
+  margin: 1em 0;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: var(--main-light);
+  text-transform: uppercase;
+}
+
+.bar_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  max-width: 100%;
+  height: 240px;
+}
+
+.bar canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.labels_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  max-width: 100%;
+  margin-top: 1em;
+}
+
+.bar_label {
+  background-color: var(--main-light);
+  color: var(--background);
+}
