@@ -6,7 +6,7 @@ import * as d3 from "d3";
 import { Bar } from "react-chartjs-2";
 import styles from "./visual.module.css";
 
-export const Graphs = () => {
+export const BarGraphs = () => {
   const randomBar = Math.floor(Math.random() * 4) + 1;
   const randomIndex = Math.floor(Math.random() * 6);
 
@@ -57,7 +57,7 @@ export const Graphs = () => {
 
   return (
     <div className={styles.graphs}>
-      <h3 className={styles.title}>Echo Graphs</h3>
+      <h3 className={styles.graphs_title}>Echo Graphs</h3>
       <div className={styles.bar_container}>
         <div className={styles.bar}>
           <Bar data={getRandomData(1)} options={chartOptions as any} />

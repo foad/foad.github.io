@@ -1,6 +1,6 @@
 import { Title } from "./components/title";
 import { Panel } from "./components/panel";
-import { Contour, Sunburst, Graphs } from "./components/visual";
+import { Contour, Sunburst, BarGraphs, RadarGraph } from "./components/visual";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -16,7 +16,8 @@ export default function Home() {
               Unit 01
             </Title>
             <Sunburst />
-            <Graphs />
+            <BarGraphs />
+            <RadarGraph />
           </Panel>
         </div>
       </main>
