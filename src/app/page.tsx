@@ -1,6 +1,12 @@
 import { Title } from "./components/title";
 import { Panel } from "./components/panel";
-import { Contour, Sunburst, BarGraphs, RadarGraph } from "./components/visual";
+import {
+  Contour,
+  Sunburst,
+  BarGraphs,
+  RadarGraph,
+  Squares,
+} from "./components/visual";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -18,6 +24,7 @@ export default function Home() {
             <Sunburst />
             <BarGraphs />
             <RadarGraph />
+            <Squares />
           </Panel>
         </div>
       </main>
