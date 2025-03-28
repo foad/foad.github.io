@@ -1,3 +1,9 @@
 import { Title } from "./title";
 
-export { Title };
+const TITLE_TYPE = {
+  main: "main",
+  secondary: "secondary",
+  tertiary: "tertiary",
+};
+
+export { Title, TITLE_TYPE };

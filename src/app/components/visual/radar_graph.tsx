@@ -4,6 +4,7 @@
 import "chart.js/auto";
 import * as d3 from "d3";
 import { Radar } from "react-chartjs-2";
+import { generateText } from "@/app/utils/text_gen";
 import styles from "./visual.module.css";
 
 export const RadarGraph = () => {
@@ -65,7 +66,9 @@ export const RadarGraph = () => {
 
   return (
     <div className={styles.graphs}>
-      <h3 className={styles.graphs_title}>Echo Graphs</h3>
+      <h3 className={styles.graphs_title}>
+        {generateText("{{component}} {{measurement}}")}
+      </h3>
       <div className={styles.radar_container}>
         <Radar data={getRandomData()} options={chartOptions as any} />
       </div>

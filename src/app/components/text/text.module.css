@@ -1,0 +1,62 @@
+.table {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-auto-rows: auto;
+}
+
+.row {
+  display: contents;
+}
+
+.header .cell {
+  background-color: var(--title-background);
+  padding-top: 0;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: var(--main-light);
+  font-weight: bold;
+  border: 0;
+}
+
+.cell {
+  padding: 8px 8px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.cell:first-of-type {
+  font-weight: bold;
+  color: var(--main-light);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.subtext {
+  font-size: 0.8em;
+  font-weight: 100;
+  color: var(--grey);
+  margin-top: 0.2em;
+}
+
+.cell:last-of-type {
+  text-align: right;
+}
+
+.cell span.active, .cell span.inactive {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  align-self: center;
+}
+
+.active {
+  background-color: var(--main-light);
+}
+
+.inactive {
+  background-color: var(--title-background);
+  border: 1px dotted var(--main-light);
+}

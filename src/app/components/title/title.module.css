@@ -18,6 +18,17 @@
   position: relative;
 }
 
+.tertiary_title {
+  font-size: 0.9em;
+  width: 100%;
+  text-align: left;
+  padding: 0.5em 0;
+  position: relative;
+  background-color: transparent;
+  border-top: 1px dotted var(--main-light);
+  border-bottom: 1px dotted var(--main-light);
+}
+
 .subtitle {
   font-size: 0.75em;
   font-weight: 100;

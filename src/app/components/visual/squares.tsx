@@ -1,3 +1,4 @@
+import { generateText } from "@/app/utils/text_gen";
 import styles from "./visual.module.css";
 
 export const Squares = () => {
@@ -16,7 +17,9 @@ export const Squares = () => {
     <div className={styles.squares}>
       <div className={styles.squares_container}>{generateSquares()}</div>
       <div className={styles.squares_info}>
-        <span className={styles.squares_name}>Linear System S53</span>
+        <span className={styles.squares_name}>
+          {generateText("{{component}} System S{{number}}")}
+        </span>
         <span className={styles.squares_status}>Active</span>
       </div>
     </div>
