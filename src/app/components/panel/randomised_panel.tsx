@@ -53,20 +53,13 @@ export const RandomisedPanel = () => {
   const generateRandomItems = () => {
     const items = [];
 
-    const RandomVisual =
-      visual_items[Math.floor(Math.random() * visual_items.length)];
+    const visuals = visual_items.map((Visual, index) => (
+      <Visual key={`visual_${index}`} />
+    ));
+    items.push(...visuals);
 
-    const randomText =
-      Math.random() < 0.5 ? (
-        <Table key="text_0" />
-      ) : (
-        <div key="text_0" className="text">
-          {generateText("{{component}} {{measurement}}")}
-        </div>
-      );
-    items.push(randomText);
-
-    items.push(<RandomVisual key="visual_0" />);
+    const text = <Table key="text_0" />;
+    items.push(text);
 
     const shuffledItems = shuffleArray(items);
     const randomTitles = Array.from({ length: shuffledItems.length }, () =>
