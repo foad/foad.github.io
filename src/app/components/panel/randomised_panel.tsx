@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Panel } from "./panel";
+import styles from "./panel.module.css";
 import { Title, TITLE_TYPE } from "@/app/components/title";
 import { generateText } from "@/app/utils/text_gen";
 import {
@@ -72,14 +73,7 @@ export const RandomisedPanel = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "360px",
-        maxWidth: "360px",
-        minWidth: "360px",
-        margin: "0 32px",
-      }}
-    >
+    <div className={styles.panel_container}>
       <Panel>{generateRandomItems()}</Panel>
     </div>
   );
