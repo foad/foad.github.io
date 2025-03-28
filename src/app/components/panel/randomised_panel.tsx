@@ -13,7 +13,7 @@ import { Table } from "@/app/components/text";
 
 export const RandomisedPanel = () => {
   const visual_items = [Contour, Sunburst, BarGraphs, RadarGraph, Squares];
-  // const text_items = [Table];
+  const text_items = [Table];
 
   const shuffleArray = (array: ReactNode[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -58,8 +58,10 @@ export const RandomisedPanel = () => {
     ));
     items.push(...visuals);
 
-    const text = <Table key="text_0" />;
-    items.push(text);
+    const text = text_items.map((Text, index) => (
+      <Text key={`text_${index}`} />
+    ));
+    items.push(...text);
 
     const shuffledItems = shuffleArray(items);
     const randomTitles = Array.from({ length: shuffledItems.length }, () =>
@@ -69,5 +71,16 @@ export const RandomisedPanel = () => {
     return randomTitles.map((k, i) => [k, shuffledItems[i]]).flat();
   };
 
-  return <Panel>{generateRandomItems()}</Panel>;
+  return (
+    <div
+      style={{
+        width: "360px",
+        maxWidth: "360px",
+        minWidth: "360px",
+        margin: "0 32px",
+      }}
+    >
+      <Panel>{generateRandomItems()}</Panel>
+    </div>
+  );
 };
