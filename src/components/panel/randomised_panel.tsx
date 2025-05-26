@@ -68,7 +68,13 @@ export const RandomisedPanel = () => {
 
   return (
     <div className={styles.panel_container}>
-      <Panel>{generateRandomItems()}</Panel>
+      {generateRandomItems()}
+      {generateRandomItems()}
+      {generateRandomItems()}
+      {generateRandomItems()}
+      {generateRandomItems()}
+      {generateRandomItems()}
+      {generateRandomItems()}
     </div>
   );
 };

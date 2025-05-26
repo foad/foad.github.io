@@ -34,6 +34,7 @@
 .bar_label {
   background-color: var(--main-light);
   color: var(--background);
+  text-align: center;
 }
 
 .radar_container {
