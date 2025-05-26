@@ -4,7 +4,7 @@
 import "chart.js/auto";
 import * as d3 from "d3";
 import { Radar } from "react-chartjs-2";
-import { generateText } from "@/app/utils/text_gen";
+import { generateText } from "../../utils/text_gen";
 import styles from "./visual.module.css";
 
 export const RadarGraph = () => {

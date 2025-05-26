@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-
 import "chart.js/auto";
 import * as d3 from "d3";
 import { Bar } from "react-chartjs-2";
-import { generateText } from "@/app/utils/text_gen";
+import { generateText } from "../../utils/text_gen";
 import styles from "./visual.module.css";
 
 export const BarGraphs = () => {

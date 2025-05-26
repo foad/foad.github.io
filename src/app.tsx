@@ -1,7 +1,7 @@
 import { RandomisedPanel } from "./components/panel/randomised_panel";
-import styles from "./page.module.css";
+import styles from "./app.module.css";
 
-export default function Home() {
+export const App = () => {
   return (
     <div className={styles.container}>
       <div className={styles.sidePanels}>
@@ -20,4 +20,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { generateText } from "@/app/utils/text_gen";
+import { generateText } from "../../utils/text_gen";
 import styles from "./text.module.css";
 
 export const Table = () => {

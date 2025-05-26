@@ -1,16 +1,10 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Panel } from "./panel";
 import styles from "./panel.module.css";
-import { Title, TITLE_TYPE } from "@/app/components/title";
-import { generateText } from "@/app/utils/text_gen";
-import {
-  Contour,
-  Sunburst,
-  BarGraphs,
-  RadarGraph,
-  Squares,
-} from "@/app/components/visual";
-import { Table } from "@/app/components/text";
+import { Title, TITLE_TYPE } from "../title";
+import { generateText } from "../../utils/text_gen";
+import { Contour, Sunburst, BarGraphs, RadarGraph, Squares } from "../visual";
+import { Table } from "../text";
 
 export const RandomisedPanel = () => {
   const visual_items = [Contour, Sunburst, BarGraphs, RadarGraph, Squares];
