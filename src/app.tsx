@@ -1,4 +1,5 @@
 import { RandomisedPanel } from "./components/panel/randomised_panel";
+import { Logo } from "./components/logo";
 import styles from "./app.module.css";
 
 export const App = () => {
@@ -9,8 +10,11 @@ export const App = () => {
       </div>
       <main className={styles.main}>
         <div className={styles.block}>
-          <h1 className={styles.title}>Dan Foad</h1>
-          <p>hello :)</p>
+          <Logo />
+          <h1 className={styles.title}>
+            personal site and portfolio of{" "}
+            <span className={styles.name}>dan foad</span>
+          </h1>
         </div>
       </main>
     </div>
