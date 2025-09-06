@@ -90,7 +90,7 @@
   align-items: center;
   background: var(--main);
   font-size: 1.5rem;
-  padding: 0 1rem;
+  padding: 0 2rem 0 1rem;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }

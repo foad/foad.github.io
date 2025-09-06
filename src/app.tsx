@@ -59,12 +59,12 @@ export const App = () => {
               <strong>Cambridge University Press & Assessment</strong>
             </p>
             <p className={styles.subtitle}>
-              <strong>MSc student</strong> at the{" "}
-              <strong>University of Bath</strong> studying{" "}
+              <strong>MSc Student</strong> at the{" "}
+              <strong>University of Bath</strong>, studying{" "}
               <strong>Artificial Intelligence</strong>
             </p>
             <p className={styles.subtitle}>
-              (very) Amateur <strong>photographer</strong>
+              (Very) Amateur <strong>Photographer</strong>
             </p>
           </div>
         </div>

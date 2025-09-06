@@ -23,7 +23,7 @@ export const Logo = ({ width, height }: LogoProps) => {
     >
       <style type="text/css">
         {`
-          .st0 { fill: #212327; }
+          .st0 { fill: #31343a; }
           .st1 { fill: #ed6a5a; }
         `}
       </style>
