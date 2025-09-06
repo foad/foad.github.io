@@ -1,6 +1,11 @@
 import styles from "./logo.module.css";
 
-export const Logo = () => {
+type LogoProps = {
+  width?: number;
+  height?: number;
+};
+
+export const Logo = ({ width, height }: LogoProps) => {
   return (
     <svg
       version="1.1"
@@ -13,14 +18,15 @@ export const Logo = () => {
       enableBackground="new 0 0 665.4 218.6"
       xmlSpace="preserve"
       className={styles.logo}
+      width={width}
+      height={height}
     >
       <style type="text/css">
         {`
           .st0 { fill: #212327; }
-          .st1 { fill: #02A6BC; }
+          .st1 { fill: #ed6a5a; }
         `}
       </style>
-      {/* Metadata and comments are generally removed in React components as they don't impact rendering */}
       <g>
         <g>
           <path
@@ -43,6 +49,40 @@ export const Logo = () => {
             className="st0"
             d="M532.8,40.1h-69.3v24.7h62.1v0h7.1c24.5,0,44.5,20,44.5,44.5c0,24.6-20,44.6-44.5,44.6h-44.6V93.5h-24.7v85
               h69.3c19.1,0,36.4-7.7,48.9-20.3c1.4-1.4,2.7-2.9,4-4.3c10.3-12,16.4-27.7,16.4-44.6C602,71,571,40.1,532.8,40.1z"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export const ShortLogo = ({ width, height }: LogoProps) => {
+  return (
+    <svg
+      version="1.1"
+      id="Layer_1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="300 0 170 218.6"
+      enableBackground="new 0 0 665.4 218.6"
+      xmlSpace="preserve"
+      className={styles.shortLogo}
+      width={width}
+      height={height}
+    >
+      <style type="text/css">
+        {`
+          .st1 { fill: #ed6a5a; }
+        `}
+      </style>
+      <g>
+        <g>
+          <polygon
+            className="st1"
+            points="383.8,40 325.8,153.8 313.2,178.6 341,178.6 353.6,153.8 383.8,94.5 414,153.8 426.7,178.6 
+              454.4,178.6 441.8,153.8"
           />
         </g>
       </g>

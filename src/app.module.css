@@ -1,0 +1,120 @@
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.hero {
+  height: 100vh;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.nav {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  height: 72px;
+  color: var(--background);
+}
+
+.nav_logo {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem 0 1.5rem;
+  border: 3px solid var(--main);
+  border-right: 0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.nav_name {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  gap: 0.1rem;
+  margin-left: 0.5rem;
+  color: var(--main);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 0.1rem;
+}
+
+.nav_links {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  background: var(--main);
+  padding: 0 3rem;
+}
+
+.nav_links li {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: flex;
+  align-items: stretch;
+  padding: 0 1rem;
+  height: 48px;
+}
+
+.nav_links li a {
+  display: flex;
+  align-items: center;
+}
+
+.nav_links li:hover {
+  background-color: var(--main-dark);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav_socials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--main);
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.nav_socials a {
+  height: 32px;
+  width: 32px;
+  background: var(--main-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+}
+
+.nav_socials a:hover {
+  border: 2px solid var(--contrast);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.github {
+  border-radius: 50%;
+}
+
+.linkedin {
+  border-radius: 8px;
+}
