@@ -16,7 +16,7 @@ export const Logo = () => {
     >
       <style type="text/css">
         {`
-          .st0 { fill: #fdf1dd; }
+          .st0 { fill: #212327; }
           .st1 { fill: #02A6BC; }
         `}
       </style>
