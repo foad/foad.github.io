@@ -44,9 +44,29 @@ export const App = () => {
           </div>
         </nav>
         <div className={styles.hero_content}>
-          <Logo />
-          <h1 className={styles.title}>Foad</h1>
-          <p className={styles.subtitle}>hello</p>
+          <div className={styles.hero_splash}>
+            <div className={styles.splash_image}>
+              <img src="/profile_transparent.png" alt="Dan Foad Headshot" />
+            </div>
+            <div className={styles.logo_container}>
+              <Logo width={350} />
+            </div>
+          </div>
+          <div className={styles.hero_text}>
+            <h1 className={styles.title}>Dan Foad</h1>
+            <p className={styles.subtitle}>
+              <strong>Lead Developer</strong> at{" "}
+              <strong>Cambridge University Press & Assessment</strong>
+            </p>
+            <p className={styles.subtitle}>
+              <strong>MSc student</strong> at the{" "}
+              <strong>University of Bath</strong> studying{" "}
+              <strong>Artificial Intelligence</strong>
+            </p>
+            <p className={styles.subtitle}>
+              (very) Amateur <strong>photographer</strong>
+            </p>
+          </div>
         </div>
       </div>
     </main>
