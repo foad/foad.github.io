@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+:root {
+  --background: #fdf1dd;
+  --background-light: #fffdfa;
+  --foreground: #212327;
+  --main: #ed6a5a;
+  --main-light: #f39c91;
+  --main-dark: #e94a35;
+  --logo-primary: #ed6a5a;
+  --grey: #ddd7c5;
+  --contrast: #12263a;
+  --contrast-light: #06bcc1;
+  --title-background: #31343a;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Sofia Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
