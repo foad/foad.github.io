@@ -13,13 +13,13 @@ export const Nav = () => {
       </div>
       <ul className={styles.nav_links}>
         <li>
-          <a href="#">About</a>
+          <a href="#about">About</a>
         </li>
         <li>
-          <a href="#">Photography</a>
+          <a href="https://www.instagram.com/catatonic_dan/">Photography</a>
         </li>
         <li>
-          <a href="#">Contact</a>
+          <a href="https://linkedin.com/in/danfoad">Contact</a>
         </li>
       </ul>
       <div className={styles.nav_socials}>

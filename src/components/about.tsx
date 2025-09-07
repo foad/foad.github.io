@@ -3,7 +3,7 @@ import { Timeline } from "./timeline";
 
 export const About = () => {
   return (
-    <div className={styles.about_section}>
+    <div className={styles.about_section} id="about">
       <Timeline />
     </div>
   );
