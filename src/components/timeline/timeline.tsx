@@ -6,56 +6,55 @@ const timelineItems = [
     title: "MSc Artificial Intelligence Student",
     subtitle: "University of Bath",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Part-time, focusing on machine learning, data science, and AI ethics.",
   },
   {
     date: "Feb 2024 - Present",
     title: "Lead Developer",
     subtitle: "Cambridge University Press & Assessment",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Developing innovative digital solutions with a focus on the safe use of modern AI techniques in the educational sector.",
   },
   {
     date: "Jan 2023 - Feb 2024",
     title: "Senior Developer",
     subtitle: "Sky UK",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Engineered the core streaming technologies that power Peacock, Sky Glass, and NOW, built to handle millions of concurrent users.",
   },
   {
     date: "Sep 2021 - Jan 2023",
     title: "Software Engineering Manager",
-    subtitle: "NOW TV",
+    subtitle: "Sky UK (NOW TV)",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Led the hiring and running of a team to release a new cross-platform app for Apple TV and Roku while still contributing as a senior engineer.",
   },
   {
     date: "Nov 2019 - Sep 2021",
     title: "Senior Software Developer",
-    subtitle: "NOW TV",
+    subtitle: "Sky UK (NOW TV)",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Contributed to the development and technical direction of NOW's streaming services, focusing on accessibility and pipeline reliability.",
   },
   {
     date: "Dec 2018 - Nov 2019",
     title: "Software Developer",
-    subtitle: "NOW TV",
+    subtitle: "Sky UK (NOW TV)",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Developed and maintained both frontend streaming platforms and backend payment gateways.",
   },
   {
     date: "Jul 2018 - Dec 2018",
     title: "Associate Software Developer",
     subtitle: "Sky UK",
-    description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+    description: "Contributed to Smart TV applications and internal tools.",
   },
   {
     date: "Sep 2015 - Jul 2018",
     title: "BEng Computer Systems Engineering Student",
     subtitle: "University of Birmingham",
     description:
-      "Leading the development of innovative educational technologies and platforms to enhance learning experiences worldwide.",
+      "Studied a broad range of topics including software engineering, embedded systems and digital signal processing.",
   },
 ];
 
