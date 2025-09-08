@@ -19,7 +19,7 @@ export const Nav = () => {
         </div>
         <ul className={styles.nav_links}>
           <li>
-            <a href="#about">About</a>
+            <a href="#hero">About</a>
           </li>
           <li>
             <a href="https://www.instagram.com/catatonic_dan/">Photography</a>
@@ -52,7 +52,7 @@ export const Nav = () => {
         {isOpen && (
           <ul className={styles.mobile_menu}>
             <li>
-              <a href="#about" onClick={() => setIsOpen(false)}>
+              <a href="#hero" onClick={() => setIsOpen(false)}>
                 About
               </a>
             </li>

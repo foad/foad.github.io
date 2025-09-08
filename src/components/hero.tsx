@@ -12,7 +12,7 @@ export const Hero = () => {
           <Logo width={350} />
         </div>
       </div>
-      <div className={styles.hero_text}>
+      <div className={styles.hero_text} id="hero">
         <h1 className={styles.title}>Dan Foad</h1>
         <p className={styles.subtitle}>
           <strong>Lead Developer</strong> at{" "}

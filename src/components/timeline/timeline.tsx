@@ -60,44 +60,49 @@ const timelineItems = [
 
 export const Timeline = () => {
   return (
-    <div className={styles.timeline_container}>
-      {timelineItems.map((item, index) => {
-        const renderItem = (isLeft: boolean) => (
-          <div
-            className={[
-              styles.timeline_content,
-              isLeft ? styles.left : styles.right,
-            ].join(" ")}
-          >
-            <div className={styles.timeline_content_box}>
-              <h3 className={styles.timeline_title}>{item.title}</h3>
-              <h4 className={styles.timeline_subtitle}>{item.subtitle}</h4>
-              <p className={styles.timeline_description}>{item.description}</p>
+    <div className={styles.timeline_section}>
+      <h2 className={styles.section_title}>My Journey</h2>
+      <div className={styles.timeline_container}>
+        {timelineItems.map((item, index) => {
+          const renderItem = (isLeft: boolean) => (
+            <div
+              className={[
+                styles.timeline_content,
+                isLeft ? styles.left : styles.right,
+              ].join(" ")}
+            >
+              <div className={styles.timeline_content_box}>
+                <h3 className={styles.timeline_title}>{item.title}</h3>
+                <h4 className={styles.timeline_subtitle}>{item.subtitle}</h4>
+                <p className={styles.timeline_description}>
+                  {item.description}
+                </p>
+              </div>
             </div>
-          </div>
-        );
+          );
 
-        const renderDate = (isLeft: boolean) => (
-          <div
-            className={[
-              styles.timeline_date,
-              isLeft ? styles.left : styles.right,
-            ].join(" ")}
-          >
-            {item.date}
-          </div>
-        );
-
-        return (
-          <div key={index} className={styles.timeline_item}>
-            {index % 2 === 0 ? renderItem(true) : renderDate(true)}
-            <div className={styles.timeline_bar}>
-              <div className={styles.timeline_inner_circle}></div>
+          const renderDate = (isLeft: boolean) => (
+            <div
+              className={[
+                styles.timeline_date,
+                isLeft ? styles.left : styles.right,
+              ].join(" ")}
+            >
+              {item.date}
             </div>
-            {index % 2 !== 0 ? renderItem(false) : renderDate(false)}
-          </div>
-        );
-      })}
+          );
+
+          return (
+            <div key={index} className={styles.timeline_item}>
+              {index % 2 === 0 ? renderItem(true) : renderDate(true)}
+              <div className={styles.timeline_bar}>
+                <div className={styles.timeline_inner_circle}></div>
+              </div>
+              {index % 2 !== 0 ? renderItem(false) : renderDate(false)}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
