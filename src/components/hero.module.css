@@ -47,3 +47,20 @@
   color: var(--contrast);
   margin: 0.5rem 0;
 }
+
+@media (max-width: 992px) {
+  .hero_content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .logo_container svg {
+    height: 72px;
+  }
+  .splash_image img {
+    max-width: 250px;
+  }
+  .title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+}
