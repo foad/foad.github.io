@@ -1,15 +1,21 @@
 .nav {
   width: 100%;
   max-width: 720px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   display: flex;
   align-items: stretch;
   height: 72px;
   color: var(--background);
 }
 
+.nav_spacer {
+  display: none;
+  height: 80px;
+}
+
 .nav_logo {
   display: flex;
+  background: var(--background);
   align-items: center;
   padding: 0 2rem 0 1.5rem;
   border: 3px solid var(--main);
@@ -97,4 +103,78 @@
 
 .linkedin {
   border-radius: 8px;
+}
+
+.hamburger {
+  display: none;
+  padding: 0 1.5rem;
+  background: var(--main);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile_menu {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem;
+  padding-left: 2rem;
+  text-align: right;
+  list-style: none;
+  background: var(--main);
+  position: absolute;
+  top: 80px;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 800;
+  gap: 0.5rem;
+}
+
+.mobile_spacer {
+  height: 2px;
+  background: var(--main-light);
+  border-radius: 1px;
+}
+
+.mobile_socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    margin-top: 1rem;
+    width: auto;
+    z-index: 1000;
+  }
+  .nav_spacer {
+    display: block;
+  }
+  .nav_logo {
+    flex: 1;
+  }
+  .nav_links {
+    display: none;
+  }
+  .nav_socials {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .mobile_menu {
+    display: flex;
+  }
 }
