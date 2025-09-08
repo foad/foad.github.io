@@ -26,6 +26,8 @@ export const Carousel = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const scrollTimeout = useRef<number | null>(null);
+
   const isDragging = useRef(false);
   const startPos = useRef(0);
   const scrollLeft = useRef(0);
@@ -49,27 +51,17 @@ export const Carousel = () => {
     setShowRightArrow(selectedImageIndex < images.length - 1);
   }, [selectedImageIndex]);
 
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!carouselRef.current) return;
-    isDragging.current = true;
-    const startX = "touches" in e ? e.touches[0].pageX : e.pageX;
-    startPos.current = startX - carouselRef.current.offsetLeft;
-    scrollLeft.current = carouselRef.current.scrollLeft;
-  };
+  useEffect(() => {
+    return () => {
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
 
-  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDragging.current || !carouselRef.current) return;
-    e.preventDefault();
-    const currentX = "touches" in e ? e.touches[0].pageX : e.pageX;
-    const x = currentX - carouselRef.current.offsetLeft;
-    const walk = (x - startPos.current) * 1.5;
-    carouselRef.current.scrollLeft = scrollLeft.current - walk;
-  };
-
-  const handleDragEnd = () => {
-    isDragging.current = false;
+  const runSnapLogic = () => {
     const carousel = carouselRef.current;
-    if (!carousel) return;
+    if (!carousel || isDragging.current) return;
 
     const viewportCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
     let closestIndex = -1;
@@ -86,9 +78,43 @@ export const Carousel = () => {
       }
     });
 
-    if (closestIndex !== -1) {
+    if (closestIndex !== -1 && closestIndex !== selectedImageIndex) {
       setSelectedImageIndex(closestIndex);
     }
+  };
+
+  const handleScroll = () => {
+    if (scrollTimeout.current) {
+      clearTimeout(scrollTimeout.current);
+    }
+    scrollTimeout.current = window.setTimeout(() => {
+      runSnapLogic();
+    }, 150);
+  };
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!carouselRef.current) return;
+    isDragging.current = true;
+    if (scrollTimeout.current) {
+      clearTimeout(scrollTimeout.current);
+    }
+    const startX = "touches" in e ? e.touches[0].pageX : e.pageX;
+    startPos.current = startX - carouselRef.current.offsetLeft;
+    scrollLeft.current = carouselRef.current.scrollLeft;
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging.current || !carouselRef.current) return;
+    e.preventDefault();
+    const currentX = "touches" in e ? e.touches[0].pageX : e.pageX;
+    const x = currentX - carouselRef.current.offsetLeft;
+    const walk = (x - startPos.current) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const handleDragEnd = () => {
+    isDragging.current = false;
+    runSnapLogic();
   };
 
   const handleArrowClick = (direction: "left" | "right") => {
@@ -127,6 +153,7 @@ export const Carousel = () => {
         <div
           ref={carouselRef}
           className={styles.carousel_images}
+          onScroll={handleScroll}
           onMouseDown={handleDragStart}
           onMouseMove={handleDragMove}
           onMouseUp={handleDragEnd}
@@ -140,7 +167,6 @@ export const Carousel = () => {
               key={index}
               ref={(el) => {
                 itemRefs.current[index] = el;
-                return;
               }}
               className={[
                 styles.image_container,
