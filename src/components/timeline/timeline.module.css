@@ -79,15 +79,22 @@
     flex-direction: column;
     align-items: stretch;
     position: relative;
-    padding: 0 1rem;
+    padding: 0 1rem 2rem 2rem;
   }
   .timeline_date {
     position: absolute;
     top: 0;
-    left: 1rem;
+    left: 2rem;
     font-weight: 700;
   }
   .timeline_bar {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    height: 100%;
+    margin: 0;
+  }
+  .timeline_inner_circle {
+    top: 1rem;
   }
 }
