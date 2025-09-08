@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./carousel.module.css";
 
 const BASE_URL =
-  "https://foad-photos{type}.s3.eu-west-2.amazonaws.com/{filename}.jpg";
+  "https://foad-photos{type}.s3.eu-west-2.amazonaws.com/{filename}";
 
 const images = [
   "DSCF0637.jpg",
@@ -19,63 +19,87 @@ const images = [
 ];
 
 export const Carousel = () => {
-  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
-  const [showGradientLeft, setShowGradientLeft] = useState(false);
-  const [showGradientRight, setShowGradientRight] = useState(true);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
 
   const carouselRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const isDragging = useRef(false);
   const startPos = useRef(0);
   const scrollLeft = useRef(0);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!carouselRef.current) return;
-    isDragging.current = true;
-    startPos.current = e.pageX - carouselRef.current.offsetLeft;
-    scrollLeft.current = carouselRef.current.scrollLeft;
-  };
+  useEffect(() => {
+    const item = itemRefs.current[selectedImageIndex];
+    const carousel = carouselRef.current;
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current || !carouselRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startPos.current) * 1.5; // Adjust sensitivity
-    carouselRef.current.scrollLeft = scrollLeft.current - walk;
-  };
+    if (item && carousel && !isDragging.current) {
+      const carouselCenter = carousel.offsetWidth / 2;
+      const itemCenter = item.offsetWidth / 2;
+      const scrollPosition = item.offsetLeft - carouselCenter + itemCenter;
 
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
-
-  const handleArrowClick = (direction: "left" | "right") => {
-    if (carouselRef.current) {
-      const itemWidth = 166;
-      carouselRef.current.scrollBy({
-        left: direction === "right" ? itemWidth : -itemWidth,
+      carousel.scrollTo({
+        left: scrollPosition,
         behavior: "smooth",
       });
     }
+
+    setShowLeftArrow(selectedImageIndex > 0);
+    setShowRightArrow(selectedImageIndex < images.length - 1);
+  }, [selectedImageIndex]);
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!carouselRef.current) return;
+    isDragging.current = true;
+    const startX = "touches" in e ? e.touches[0].pageX : e.pageX;
+    startPos.current = startX - carouselRef.current.offsetLeft;
+    scrollLeft.current = carouselRef.current.scrollLeft;
   };
 
-  const handleScroll = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-      setShowGradientLeft(scrollLeft > 0);
-      setShowGradientRight(scrollLeft + clientWidth < scrollWidth);
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging.current || !carouselRef.current) return;
+    e.preventDefault();
+    const currentX = "touches" in e ? e.touches[0].pageX : e.pageX;
+    const x = currentX - carouselRef.current.offsetLeft;
+    const walk = (x - startPos.current) * 1.5;
+    carouselRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const handleDragEnd = () => {
+    isDragging.current = false;
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const viewportCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
+    let closestIndex = -1;
+    let minDistance = Infinity;
+
+    itemRefs.current.forEach((item, index) => {
+      if (!item) return;
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const distance = Math.abs(viewportCenter - itemCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== -1) {
+      setSelectedImageIndex(closestIndex);
     }
   };
 
-  useEffect(() => {
-    const carouselElement = carouselRef.current;
-    if (carouselElement) {
-      carouselElement.addEventListener("scroll", handleScroll);
-      handleScroll(); // Initial check
-
-      return () => {
-        carouselElement.removeEventListener("scroll", handleScroll);
-      };
+  const handleArrowClick = (direction: "left" | "right") => {
+    if (direction === "left") {
+      setSelectedImageIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    } else {
+      setSelectedImageIndex((prevIndex) =>
+        Math.min(prevIndex + 1, images.length - 1)
+      );
     }
-  }, []);
+  };
 
   return (
     <div className={styles.carousel_container}>
@@ -85,7 +109,7 @@ export const Carousel = () => {
           className={styles.selected_image}
           src={BASE_URL.replace("{type}", "-hero").replace(
             "{filename}",
-            selectedImage.replace(".jpg", "")
+            images[selectedImageIndex]
           )}
           alt="Selected Carousel Image"
           loading="lazy"
@@ -94,7 +118,7 @@ export const Carousel = () => {
       <div className={styles.carousel}>
         <div
           className={`${styles.carousel_arrow_left} ${
-            !showGradientLeft ? styles.hidden : ""
+            !showLeftArrow ? styles.hidden : ""
           }`}
           onClick={() => handleArrowClick("left")}
         >
@@ -102,31 +126,37 @@ export const Carousel = () => {
         </div>
         <div
           ref={carouselRef}
-          className={`${styles.carousel_images} ${
-            showGradientLeft ? styles.show_gradient_left : ""
-          } ${showGradientRight ? styles.show_gradient_right : ""}`}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
+          className={styles.carousel_images}
+          onMouseDown={handleDragStart}
+          onMouseMove={handleDragMove}
+          onMouseUp={handleDragEnd}
+          onMouseLeave={handleDragEnd}
+          onTouchStart={handleDragStart}
+          onTouchMove={handleDragMove}
+          onTouchEnd={handleDragEnd}
         >
           {images.map((img, index) => (
             <div
               key={index}
+              ref={(el) => (itemRefs.current[index] = el)}
               className={[
                 styles.image_container,
-                img === selectedImage ? styles.selected : "",
+                index === selectedImageIndex ? styles.selected : "",
               ].join(" ")}
+              onClick={() => {
+                if (!isDragging.current) {
+                  setSelectedImageIndex(index);
+                }
+              }}
             >
               <img
                 className={styles.image}
                 src={BASE_URL.replace("{type}", "-thumbnails").replace(
                   "{filename}",
-                  img.replace(".jpg", "")
+                  img
                 )}
-                alt="Carousel Image"
+                alt="Carousel Thumbnail"
                 loading="lazy"
-                onClick={() => setSelectedImage(img)}
                 onDragStart={(e) => e.preventDefault()}
               />
             </div>
@@ -134,7 +164,7 @@ export const Carousel = () => {
         </div>
         <div
           className={`${styles.carousel_arrow_right} ${
-            !showGradientRight ? styles.hidden : ""
+            !showRightArrow ? styles.hidden : ""
           }`}
           onClick={() => handleArrowClick("right")}
         >
