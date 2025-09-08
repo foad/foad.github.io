@@ -81,6 +81,9 @@
     position: relative;
     padding: 0 1rem 2rem 2rem;
   }
+  .timeline_item:last-child {
+    padding-bottom: 0;
+  }
   .timeline_date {
     position: absolute;
     top: 0;
@@ -96,5 +99,8 @@
   }
   .timeline_inner_circle {
     top: 1rem;
+  }
+  .timeline_title {
+    font-size: 1.2rem;
   }
 }
