@@ -114,7 +114,6 @@ export const Carousel = () => {
 
   const handleDragEnd = () => {
     isDragging.current = false;
-    runSnapLogic();
   };
 
   const handleArrowClick = (direction: "left" | "right") => {
