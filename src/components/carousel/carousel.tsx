@@ -138,7 +138,10 @@ export const Carousel = () => {
           {images.map((img, index) => (
             <div
               key={index}
-              ref={(el) => (itemRefs.current[index] = el)}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+                return;
+              }}
               className={[
                 styles.image_container,
                 index === selectedImageIndex ? styles.selected : "",
