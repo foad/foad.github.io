@@ -23,8 +23,8 @@ export const Logo = ({ width, height }: LogoProps) => {
     >
       <style type="text/css">
         {`
-          .st0 { fill: #31343a; }
-          .st1 { fill: #ed6a5a; }
+          .st0 { fill: var(--title-background); }
+          .st1 { fill: var(--main); }
         `}
       </style>
       <g>
@@ -74,7 +74,7 @@ export const ShortLogo = ({ width, height }: LogoProps) => {
     >
       <style type="text/css">
         {`
-          .st1 { fill: #ed6a5a; }
+          .st1 { fill: var(--main); }
         `}
       </style>
       <g>
