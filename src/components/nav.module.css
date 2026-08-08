@@ -109,6 +109,9 @@
   display: none;
   padding: 0 1.5rem;
   background: var(--main);
+  border: none;
+  color: inherit;
+  font: inherit;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   align-items: center;

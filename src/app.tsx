@@ -6,11 +6,15 @@ import styles from "./app.module.css";
 
 export const App = () => {
   return (
-    <main className={styles.container}>
-      <Nav />
-      <Hero />
-      <Carousel />
-      <About />
-    </main>
+    <div className={styles.page}>
+      <header>
+        <Nav />
+      </header>
+      <main className={styles.main}>
+        <Hero />
+        <Carousel />
+        <About />
+      </main>
+    </div>
   );
 };

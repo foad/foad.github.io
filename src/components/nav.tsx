@@ -9,7 +9,7 @@ export const Nav = () => {
   return (
     <>
       <div className={styles.nav_spacer} />
-      <nav className={styles.nav}>
+      <nav className={styles.nav} aria-label="Primary">
         <div className={styles.nav_logo}>
           <ShortLogo height={50} />
           <div className={styles.nav_name}>
@@ -46,11 +46,18 @@ export const Nav = () => {
             <img src="/ln-logo.png" alt="LinkedIn" height={19} width={19} />
           </a>
         </div>
-        <div className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
-          <Menu />
-        </div>
+        <button
+          type="button"
+          className={styles.hamburger}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
+          <Menu aria-hidden="true" />
+        </button>
         {isOpen && (
-          <ul className={styles.mobile_menu}>
+          <ul className={styles.mobile_menu} id="mobile-menu">
             <li>
               <a href="#hero" onClick={() => setIsOpen(false)}>
                 About

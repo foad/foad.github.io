@@ -61,8 +61,10 @@ const timelineItems = [
 export const Timeline = () => {
   return (
     <div className={styles.timeline_section}>
-      <h2 className={styles.section_title}>My Journey</h2>
-      <div className={styles.timeline_container}>
+      <h2 id="journey-heading" className={styles.section_title}>
+        My Journey
+      </h2>
+      <ol className={styles.timeline_container}>
         {timelineItems.map((item, index) => {
           const renderItem = (isLeft: boolean) => (
             <div
@@ -93,16 +95,16 @@ export const Timeline = () => {
           );
 
           return (
-            <div key={index} className={styles.timeline_item}>
+            <li key={index} className={styles.timeline_item}>
               {index % 2 === 0 ? renderItem(true) : renderDate(true)}
               <div className={styles.timeline_bar}>
                 <div className={styles.timeline_inner_circle}></div>
               </div>
               {index % 2 !== 0 ? renderItem(false) : renderDate(false)}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </div>
   );
 };

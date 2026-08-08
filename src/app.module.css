@@ -1,4 +1,4 @@
-.container {
+.page {
   width: 100%;
   max-width: 1024px;
   margin: 0 auto;
@@ -6,14 +6,21 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  gap: 5rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
   gap: 5rem;
 }
 
 @media (max-width: 992px) {
-  .container {
+  .page {
     padding: 0 0.5rem;
+    gap: 2rem;
+  }
+  .main {
     gap: 2rem;
   }
 }

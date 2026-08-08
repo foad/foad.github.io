@@ -57,8 +57,13 @@ export const Carousel = () => {
   }, [mainApi, onSelect]);
 
   return (
-    <div className={styles.carousel_container}>
-      <h2 className={styles.carousel_title}>My Favourite Photos</h2>
+    <section
+      className={styles.carousel_container}
+      aria-labelledby="photos-heading"
+    >
+      <h2 id="photos-heading" className={styles.carousel_title}>
+        My Favourite Photos
+      </h2>
 
       <div className={styles.viewport} ref={mainRef}>
         <div className={styles.track}>
@@ -121,6 +126,6 @@ export const Carousel = () => {
           <ChevronRight size={32} />
         </button>
       </div>
-    </div>
+    </section>
   );
 };
