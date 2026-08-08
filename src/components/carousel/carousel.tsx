@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./carousel.module.css";
 
@@ -18,186 +19,107 @@ const images = [
   "DSCF8059.jpg",
 ];
 
+const srcFor = (type: "-hero" | "-thumbnails", filename: string) =>
+  BASE_URL.replace("{type}", type).replace("{filename}", filename);
+
 export const Carousel = () => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [mainRef, mainApi] = useEmblaCarousel();
+  const [thumbRef, thumbApi] = useEmblaCarousel({
+    containScroll: "keepSnaps",
+    dragFree: true,
+  });
 
-  const scrollTimeout = useRef<number | null>(null);
+  const onThumbClick = useCallback(
+    (index: number) => {
+      if (!mainApi) return;
+      mainApi.scrollTo(index);
+    },
+    [mainApi]
+  );
 
-  const isDragging = useRef(false);
-  const startPos = useRef(0);
-  const scrollLeft = useRef(0);
-
-  useEffect(() => {
-    const item = itemRefs.current[selectedImageIndex];
-    const carousel = carouselRef.current;
-
-    if (item && carousel && !isDragging.current) {
-      const carouselCenter = carousel.offsetWidth / 2;
-      const itemCenter = item.offsetWidth / 2;
-      const scrollPosition = item.offsetLeft - carouselCenter + itemCenter;
-
-      carousel.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-
-    setShowLeftArrow(selectedImageIndex > 0);
-    setShowRightArrow(selectedImageIndex < images.length - 1);
-  }, [selectedImageIndex]);
+  const onSelect = useCallback(() => {
+    if (!mainApi || !thumbApi) return;
+    const index = mainApi.selectedScrollSnap();
+    setSelectedIndex(index);
+    setCanScrollPrev(mainApi.canScrollPrev());
+    setCanScrollNext(mainApi.canScrollNext());
+    thumbApi.scrollTo(index);
+  }, [mainApi, thumbApi]);
 
   useEffect(() => {
-    return () => {
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-    };
-  }, []);
-
-  const runSnapLogic = () => {
-    const carousel = carouselRef.current;
-    if (!carousel || isDragging.current) return;
-
-    const viewportCenter = carousel.scrollLeft + carousel.offsetWidth / 2;
-    let closestIndex = -1;
-    let minDistance = Infinity;
-
-    itemRefs.current.forEach((item, index) => {
-      if (!item) return;
-      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-      const distance = Math.abs(viewportCenter - itemCenter);
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = index;
-      }
-    });
-
-    if (closestIndex !== -1 && closestIndex !== selectedImageIndex) {
-      setSelectedImageIndex(closestIndex);
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollTimeout.current) {
-      clearTimeout(scrollTimeout.current);
-    }
-    scrollTimeout.current = window.setTimeout(() => {
-      runSnapLogic();
-    }, 150);
-  };
-
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!carouselRef.current) return;
-    isDragging.current = true;
-    if (scrollTimeout.current) {
-      clearTimeout(scrollTimeout.current);
-    }
-    const startX = "touches" in e ? e.touches[0].pageX : e.pageX;
-    startPos.current = startX - carouselRef.current.offsetLeft;
-    scrollLeft.current = carouselRef.current.scrollLeft;
-  };
-
-  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDragging.current || !carouselRef.current) return;
-    e.preventDefault();
-    const currentX = "touches" in e ? e.touches[0].pageX : e.pageX;
-    const x = currentX - carouselRef.current.offsetLeft;
-    const walk = (x - startPos.current) * 1.5;
-    carouselRef.current.scrollLeft = scrollLeft.current - walk;
-  };
-
-  const handleDragEnd = () => {
-    isDragging.current = false;
-  };
-
-  const handleArrowClick = (direction: "left" | "right") => {
-    if (direction === "left") {
-      setSelectedImageIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    } else {
-      setSelectedImageIndex((prevIndex) =>
-        Math.min(prevIndex + 1, images.length - 1)
-      );
-    }
-  };
+    if (!mainApi) return;
+    onSelect();
+    mainApi.on("select", onSelect).on("reInit", onSelect);
+  }, [mainApi, onSelect]);
 
   return (
     <div className={styles.carousel_container}>
       <h2 className={styles.carousel_title}>My Favourite Photos</h2>
-      <div className={styles.selected_image_container}>
-        <img
-          className={styles.selected_image}
-          src={BASE_URL.replace("{type}", "-hero").replace(
-            "{filename}",
-            images[selectedImageIndex]
-          )}
-          alt="Selected Carousel Image"
-          loading="lazy"
-        />
-      </div>
-      <div className={styles.carousel}>
-        <div
-          className={`${styles.carousel_arrow_left} ${
-            !showLeftArrow ? styles.hidden : ""
-          }`}
-          onClick={() => handleArrowClick("left")}
-        >
-          <ChevronLeft size={32} />
-        </div>
-        <div
-          ref={carouselRef}
-          className={styles.carousel_images}
-          onScroll={handleScroll}
-          onMouseDown={handleDragStart}
-          onMouseMove={handleDragMove}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
-          onTouchStart={handleDragStart}
-          onTouchMove={handleDragMove}
-          onTouchEnd={handleDragEnd}
-        >
+
+      <div className={styles.viewport} ref={mainRef}>
+        <div className={styles.track}>
           {images.map((img, index) => (
-            <div
-              key={index}
-              ref={(el) => {
-                itemRefs.current[index] = el;
-              }}
-              className={[
-                styles.image_container,
-                index === selectedImageIndex ? styles.selected : "",
-              ].join(" ")}
-              onClick={() => {
-                if (!isDragging.current) {
-                  setSelectedImageIndex(index);
-                }
-              }}
-            >
+            <div className={styles.slide} key={img}>
               <img
-                className={styles.image}
-                src={BASE_URL.replace("{type}", "-thumbnails").replace(
-                  "{filename}",
-                  img
-                )}
-                alt="Carousel Thumbnail"
-                loading="lazy"
-                onDragStart={(e) => e.preventDefault()}
+                className={styles.selected_image}
+                src={srcFor("-hero", img)}
+                alt={`Photograph ${index + 1} of ${images.length}`}
+                loading={index === 0 ? "eager" : "lazy"}
               />
             </div>
           ))}
         </div>
-        <div
-          className={`${styles.carousel_arrow_right} ${
-            !showRightArrow ? styles.hidden : ""
-          }`}
-          onClick={() => handleArrowClick("right")}
+      </div>
+
+      <div className={styles.carousel}>
+        <button
+          type="button"
+          className={styles.carousel_arrow_left}
+          onClick={() => mainApi?.scrollPrev()}
+          disabled={!canScrollPrev}
+          aria-label="Previous photo"
+        >
+          <ChevronLeft size={32} />
+        </button>
+
+        <div className={styles.thumb_viewport} ref={thumbRef}>
+          <div className={styles.thumb_track}>
+            {images.map((img, index) => (
+              <button
+                type="button"
+                key={img}
+                className={[
+                  styles.image_container,
+                  index === selectedIndex ? styles.selected : "",
+                ].join(" ")}
+                onClick={() => onThumbClick(index)}
+                aria-label={`Show photograph ${index + 1}`}
+                aria-current={index === selectedIndex}
+              >
+                <img
+                  className={styles.image}
+                  src={srcFor("-thumbnails", img)}
+                  alt=""
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className={styles.carousel_arrow_right}
+          onClick={() => mainApi?.scrollNext()}
+          disabled={!canScrollNext}
+          aria-label="Next photo"
         >
           <ChevronRight size={32} />
-        </div>
+        </button>
       </div>
     </div>
   );
