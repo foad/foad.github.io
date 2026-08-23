@@ -1,20 +1,14 @@
-import { Hero } from "./components/hero";
-import { Nav } from "./components/nav";
-import { Carousel } from "./components/carousel";
-import { About } from "./components/about";
-import styles from "./app.module.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/home";
+import { Gallery } from "./pages/gallery";
 
 export const App = () => {
   return (
-    <div className={styles.page}>
-      <header>
-        <Nav />
-      </header>
-      <main className={styles.main}>
-        <Hero />
-        <Carousel />
-        <About />
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/photography" element={<Gallery />} />
+      </Routes>
+    </BrowserRouter>
   );
 };

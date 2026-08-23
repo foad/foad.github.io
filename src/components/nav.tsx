@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { ShortLogo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
@@ -23,7 +24,7 @@ export const Nav = () => {
             <a href="#hero">About</a>
           </li>
           <li>
-            <a href="https://www.instagram.com/catatonic_dan/">Photography</a>
+            <Link to="/photography">Photography</Link>
           </li>
           <li>
             <a href="https://linkedin.com/in/danfoad">Contact</a>
@@ -67,12 +68,9 @@ export const Nav = () => {
               </a>
             </li>
             <li>
-              <a
-                href="https://www.instagram.com/catatonic_dan/"
-                onClick={() => setIsOpen(false)}
-              >
+              <Link to="/photography" onClick={() => setIsOpen(false)}>
                 Photography
-              </a>
+              </Link>
             </li>
             <li>
               <a
