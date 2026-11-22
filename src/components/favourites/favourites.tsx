@@ -32,7 +32,7 @@ export const Favourites = () => {
         width: photo.width ?? undefined,
         height: photo.height ?? undefined,
       })),
-    [favourites]
+    [favourites],
   );
 
   if (!favourites.length) return null;
@@ -44,25 +44,26 @@ export const Favourites = () => {
 
   return (
     <section className={styles.fav} aria-labelledby="favourites-heading">
-      <h2 id="favourites-heading" className={styles.fav_title}>
-        My Favourite Photos
-      </h2>
+      <div className={styles.fav_inner}>
+        <h2 id="favourites-heading" className={styles.fav_title}>
+          My Favourite Photos
+          <Link to="/photography" className={styles.fav_cta}>
+            View my portfolio
+            <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+        </h2>
 
-      {active && <PhotoHero photo={active} onOpen={openLightbox} />}
+        {active && <PhotoHero photo={active} onOpen={openLightbox} />}
 
-      <PhotoRail
-        photos={favourites}
-        activeId={active?.id}
-        lightboxOpen={index >= 0}
-        keyboard={false}
-        onPick={setActive}
-        onAutoSelect={setActive}
-      />
-
-      <Link to="/photography" className={styles.fav_cta}>
-        View my portfolio
-        <ArrowRight size={16} aria-hidden="true" />
-      </Link>
+        <PhotoRail
+          photos={favourites}
+          activeId={active?.id}
+          lightboxOpen={index >= 0}
+          keyboard={false}
+          onPick={setActive}
+          onAutoSelect={setActive}
+        />
+      </div>
 
       <Lightbox
         open={index >= 0}

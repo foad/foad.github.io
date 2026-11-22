@@ -5,10 +5,26 @@
 }
 
 .section_title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--title-background);
+  position: relative;
+  padding-bottom: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.section_title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--main);
 }
 
 .timeline_item {

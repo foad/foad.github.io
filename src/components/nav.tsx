@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { ShortLogo } from "./logo";
-import { ThemeToggle } from "./theme-toggle";
 import styles from "./nav.module.css";
 
 export const Nav = () => {
@@ -31,8 +30,6 @@ export const Nav = () => {
           </li>
         </ul>
         <div className={styles.nav_socials}>
-          <ThemeToggle className={styles.theme_toggle} />
-          <span className={styles.socials_divider} aria-hidden="true" />
           <a
             href="https://github.com/foad"
             target="_blank"
@@ -82,8 +79,6 @@ export const Nav = () => {
             </li>
             <li className={styles.mobile_spacer} />
             <li className={styles.mobile_socials}>
-              <ThemeToggle className={styles.theme_toggle} />
-              <span className={styles.socials_divider} aria-hidden="true" />
               <a
                 href="https://github.com/foad"
                 target="_blank"

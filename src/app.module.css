@@ -12,7 +12,14 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
+}
+
+.sep {
+  border: none;
+  height: 1px;
+  margin: 0;
+  background: color-mix(in srgb, var(--foreground) 15%, transparent);
 }
 
 @media (max-width: 992px) {
