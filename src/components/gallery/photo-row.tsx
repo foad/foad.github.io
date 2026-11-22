@@ -1,7 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { thumbUrl, aspectOf, type Photo, type Section } from "../../data/photos";
+import {
+  thumbUrl,
+  aspectOf,
+  type Photo,
+  type Section,
+} from "../../data/photos";
 import styles from "./gallery.module.css";
 
 type PhotoRowProps = {
@@ -30,6 +35,55 @@ export const PhotoRow = ({
   activeIdRef.current = activeId;
   const steppingRef = useRef(false);
 
+  const [pages, setPages] = useState(0);
+  const [activePage, setActivePage] = useState(0);
+
+  const pageCount = useCallback(() => {
+    if (!embla) return 1;
+    const vp = embla.rootNode().clientWidth;
+    const content = embla.containerNode().scrollWidth;
+    return vp > 0 ? Math.max(1, Math.ceil(content / vp)) : 1;
+  }, [embla]);
+
+  useEffect(() => {
+    if (!embla) return;
+    const sync = () => {
+      const n = pageCount();
+      setPages(n);
+      setActivePage(
+        Math.min(
+          n - 1,
+          Math.max(0, Math.round(embla.scrollProgress() * (n - 1))),
+        ),
+      );
+    };
+    sync();
+    embla.on("reInit", sync).on("scroll", sync).on("select", sync);
+    return () => {
+      embla.off("reInit", sync).off("scroll", sync).off("select", sync);
+    };
+  }, [embla, pageCount]);
+
+  const goToPage = useCallback(
+    (i: number) => {
+      if (!embla) return;
+      const n = pages > 1 ? pages : 1;
+      const target = n > 1 ? i / (n - 1) : 0;
+      const list = embla.scrollSnapList();
+      let idx = 0;
+      let best = Infinity;
+      list.forEach((p, k) => {
+        const d = Math.abs(p - target);
+        if (d < best) {
+          best = d;
+          idx = k;
+        }
+      });
+      embla.scrollTo(idx);
+    },
+    [embla, pages],
+  );
+
   useEffect(() => {
     if (!embla) return;
     const onSettle = () => {
@@ -45,7 +99,10 @@ export const PhotoRow = ({
       const first = section.photos[inView[0]];
       if (first && first.id !== id) onAutoSelect(first);
     };
-    embla.on("scroll", keepActiveVisible).on("select", keepActiveVisible).on("settle", onSettle);
+    embla
+      .on("scroll", keepActiveVisible)
+      .on("select", keepActiveVisible)
+      .on("settle", onSettle);
     return () => {
       embla
         .off("scroll", keepActiveVisible)
@@ -67,7 +124,7 @@ export const PhotoRow = ({
         embla.scrollTo(target);
       }
     },
-    [embla, section.photos, onAutoSelect]
+    [embla, section.photos, onAutoSelect],
   );
 
   useEffect(() => {
@@ -75,7 +132,8 @@ export const PhotoRow = ({
       if (lightboxOpen) return;
       const el = e.target as HTMLElement | null;
       if (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) return;
-      if (section.photos.findIndex((p) => p.id === activeIdRef.current) < 0) return;
+      if (section.photos.findIndex((p) => p.id === activeIdRef.current) < 0)
+        return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         step(-1);
@@ -105,6 +163,27 @@ export const PhotoRow = ({
         </h2>
         {multi && (
           <div className={styles.row_controls}>
+            {pages > 1 && (
+              <div
+                className={styles.dashes}
+                role="tablist"
+                aria-label={`${section.label} pages`}
+              >
+                {Array.from({ length: pages }).map((_, i) => (
+                  <button
+                    type="button"
+                    key={i}
+                    className={`${styles.dash} ${
+                      i === activePage ? styles.dash_active : ""
+                    }`}
+                    onClick={() => goToPage(i)}
+                    aria-label={`Page ${i + 1}`}
+                    aria-selected={i === activePage}
+                    role="tab"
+                  />
+                ))}
+              </div>
+            )}
             <button
               type="button"
               className={styles.row_arrow}
