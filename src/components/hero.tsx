@@ -1,4 +1,3 @@
-import { Logo } from "./logo";
 import styles from "./hero.module.css";
 
 export const Hero = () => {
@@ -7,9 +6,6 @@ export const Hero = () => {
       <div className={styles.hero_splash}>
         <div className={styles.splash_image}>
           <img src="/profile_transparent.png" alt="Dan Foad Headshot" />
-        </div>
-        <div className={styles.logo_container}>
-          <Logo width={350} />
         </div>
       </div>
       <div className={styles.hero_text} id="hero">
