@@ -29,10 +29,25 @@ export const Gallery = () => {
   const activeRef = useRef(active);
   activeRef.current = active;
   const rowsRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.classList.add("gallery-active");
     return () => document.body.classList.remove("gallery-active");
+  }, []);
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    const rows = rowsRef.current;
+    if (!gallery || !rows) return;
+    const onWheel = (e: WheelEvent) => {
+      if (rows.contains(e.target as Node)) return;
+      if (!e.deltaY) return;
+      rows.scrollTop += e.deltaY;
+      e.preventDefault();
+    };
+    gallery.addEventListener("wheel", onWheel, { passive: false });
+    return () => gallery.removeEventListener("wheel", onWheel);
   }, []);
 
   // mobile only: focus a row's photo as soon as it becomes the centred row while scrolling
@@ -118,7 +133,7 @@ export const Gallery = () => {
   };
 
   return (
-    <div className={styles.gallery}>
+    <div className={styles.gallery} ref={galleryRef}>
       <div className={styles.top}>
         <header className={styles.header}>
           <div className={styles.header_left}>
