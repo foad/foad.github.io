@@ -80,6 +80,7 @@ export const Gallery = () => {
             key={section.id}
             section={section}
             activeId={active?.id}
+            lightboxOpen={index >= 0}
             onPick={pickPhoto}
             onAutoSelect={setActive}
           />
