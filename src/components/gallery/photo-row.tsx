@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import type { EmblaCarouselType } from "embla-carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { thumbUrl, aspectOf, type Photo, type Section } from "../../data/photos";
 import styles from "./gallery.module.css";
@@ -21,31 +20,15 @@ export const PhotoRow = ({
   onAutoSelect,
 }: PhotoRowProps) => {
   const [ref, embla] = useEmblaCarousel({
-    slidesToScroll: "auto",
+    slidesToScroll: 1,
     containScroll: "trimSnaps",
     align: "start",
-    inViewThreshold: 0.5,
+    inViewThreshold: 0.6,
   });
-  const [snaps, setSnaps] = useState<number[]>([]);
-  const [selected, setSelected] = useState(0);
 
   const activeIdRef = useRef(activeId);
   activeIdRef.current = activeId;
   const steppingRef = useRef(false);
-
-  const sync = useCallback((api: EmblaCarouselType) => {
-    setSelected(api.selectedScrollSnap());
-  }, []);
-
-  useEffect(() => {
-    if (!embla) return;
-    const refresh = () => {
-      setSnaps(embla.scrollSnapList());
-      sync(embla);
-    };
-    refresh();
-    embla.on("select", sync).on("reInit", refresh);
-  }, [embla, sync]);
 
   useEffect(() => {
     if (!embla) return;
@@ -55,12 +38,12 @@ export const PhotoRow = ({
     const keepActiveVisible = () => {
       if (steppingRef.current) return;
       const id = activeIdRef.current;
-      const activeIndex = section.photos.findIndex((p) => p.id === id);
-      if (activeIndex < 0) return;
+      const i = section.photos.findIndex((p) => p.id === id);
+      if (i < 0) return;
       const inView = embla.slidesInView();
-      if (inView.length === 0 || inView.includes(activeIndex)) return;
-      const firstVisible = section.photos[inView[0]];
-      if (firstVisible && firstVisible.id !== id) onAutoSelect(firstVisible);
+      if (inView.length === 0 || inView.includes(i)) return;
+      const first = section.photos[inView[0]];
+      if (first && first.id !== id) onAutoSelect(first);
     };
     embla.on("scroll", keepActiveVisible).on("select", keepActiveVisible).on("settle", onSettle);
     return () => {
@@ -71,19 +54,6 @@ export const PhotoRow = ({
     };
   }, [embla, section.photos, onAutoSelect]);
 
-  const revealSlide = useCallback(
-    (index: number) => {
-      if (!embla) return;
-      if (embla.slidesInView().includes(index)) return;
-      const registry = embla.internalEngine().slideRegistry;
-      let snap = registry.findIndex((group) => group.includes(index));
-      if (snap < 0) snap = Math.min(index, embla.scrollSnapList().length - 1);
-      steppingRef.current = true;
-      embla.scrollTo(snap);
-    },
-    [embla]
-  );
-
   const step = useCallback(
     (delta: number) => {
       const n = section.photos.length;
@@ -92,9 +62,12 @@ export const PhotoRow = ({
       const target = cur < 0 ? (delta > 0 ? 0 : n - 1) : cur + delta;
       if (target < 0 || target >= n) return;
       onAutoSelect(section.photos[target]);
-      revealSlide(target);
+      if (embla) {
+        steppingRef.current = true;
+        embla.scrollTo(target);
+      }
     },
-    [section.photos, onAutoSelect, revealSlide]
+    [embla, section.photos, onAutoSelect]
   );
 
   useEffect(() => {
@@ -132,21 +105,6 @@ export const PhotoRow = ({
         </h2>
         {multi && (
           <div className={styles.row_controls}>
-            {snaps.length > 1 && (
-              <div className={styles.dashes} role="tablist" aria-label={`${section.label} pages`}>
-                {snaps.map((_, i) => (
-                  <button
-                    type="button"
-                    key={i}
-                    className={`${styles.dash} ${i === selected ? styles.dash_active : ""}`}
-                    onClick={() => embla?.scrollTo(i)}
-                    aria-label={`Go to page ${i + 1}`}
-                    aria-selected={i === selected}
-                    role="tab"
-                  />
-                ))}
-              </div>
-            )}
             <button
               type="button"
               className={styles.row_arrow}
@@ -175,6 +133,7 @@ export const PhotoRow = ({
             <button
               type="button"
               key={photo.id}
+              data-id={photo.id}
               className={`${styles.tile} ${
                 photo.id === activeId ? styles.tile_active : ""
               }`}

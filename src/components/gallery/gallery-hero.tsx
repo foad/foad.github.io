@@ -40,6 +40,9 @@ export const GalleryHero = ({ photo, onOpen }: GalleryHeroProps) => {
         {photo.location && (
           <p className={styles.hero_location}>{photo.location}</p>
         )}
+        {s.takenAt && (
+          <p className={styles.hero_meta}>{formatDate(s.takenAt)}</p>
+        )}
         {photo.description && (
           <p className={styles.hero_desc}>{photo.description}</p>
         )}

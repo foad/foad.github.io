@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -26,10 +26,69 @@ export const Gallery = () => {
   const [active, setActive] = useState<Photo | undefined>(featured);
   const [index, setIndex] = useState(-1);
 
+  const activeRef = useRef(active);
+  activeRef.current = active;
+  const rowsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.body.classList.add("gallery-active");
     return () => document.body.classList.remove("gallery-active");
   }, []);
+
+  // mobile only: focus a row's photo as soon as it becomes the centred row while scrolling
+  useEffect(() => {
+    const el = rowsRef.current;
+    if (!el) return;
+    let raf = 0;
+    let lastIndex = -1;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        if (!window.matchMedia("(max-width: 900px)").matches) return;
+        const rect = el.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const rows = [...el.children].filter(
+          (c) => c.tagName === "SECTION"
+        ) as HTMLElement[];
+        let best = -1;
+        let bestDist = Infinity;
+        rows.forEach((row, i) => {
+          const r = row.getBoundingClientRect();
+          const dist = Math.abs(r.top + r.height / 2 - mid);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = i;
+          }
+        });
+        if (best < 0 || best === lastIndex) return;
+        lastIndex = best;
+        const rowEl = rows[best];
+        const viewport = rowEl.querySelector('[class*="row_viewport"]');
+        const vpLeft = (viewport ?? rowEl).getBoundingClientRect().left;
+        const tiles = [...rowEl.querySelectorAll("[data-id]")] as HTMLElement[];
+        let chosen = tiles[0];
+        let chosenLeft = Infinity;
+        tiles.forEach((t) => {
+          const l = t.getBoundingClientRect().left;
+          if (l >= vpLeft - 4 && l < chosenLeft) {
+            chosenLeft = l;
+            chosen = t;
+          }
+        });
+        const id = chosen?.getAttribute("data-id");
+        const photo = id ? allPhotos.find((p) => p.id === id) : undefined;
+        if (photo && photo.id !== activeRef.current?.id) {
+          setActive(photo);
+        }
+      });
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [sections, allPhotos]);
 
   const slides = useMemo(
     () =>
@@ -74,7 +133,7 @@ export const Gallery = () => {
         {active && <GalleryHero photo={active} onOpen={openLightbox} />}
       </div>
 
-      <div className={styles.rows}>
+      <div className={styles.rows} ref={rowsRef}>
         {sections.map((section) => (
           <PhotoRow
             key={section.id}
