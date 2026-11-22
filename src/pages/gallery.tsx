@@ -11,7 +11,7 @@ import {
   exifLine,
   type Photo,
 } from "../data/photos";
-import { GalleryHero } from "../components/gallery/gallery-hero";
+import { PhotoHero } from "../components/photo/photo-hero";
 import { PhotoRow } from "../components/gallery/photo-row";
 import { Logo } from "../components/logo";
 import styles from "../components/gallery/gallery.module.css";
@@ -130,7 +130,7 @@ export const Gallery = () => {
           </div>
         </header>
 
-        {active && <GalleryHero photo={active} onOpen={openLightbox} />}
+        {active && <PhotoHero photo={active} onOpen={openLightbox} />}
       </div>
 
       <div className={styles.rows} ref={rowsRef}>

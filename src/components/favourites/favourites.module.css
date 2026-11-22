@@ -1,0 +1,54 @@
+.fav {
+  /* remap the shared photo tokens to the home's warm palette */
+  --g-bg: var(--background);
+  --g-surface: var(--background-light);
+  --g-text: var(--foreground);
+  --g-muted: color-mix(in srgb, var(--foreground) 55%, var(--background));
+  --g-border: var(--grey);
+  --g-accent: var(--main);
+
+  /* home hero sizing: a touch smaller, and natural height on mobile (no fixed layout) */
+  --hero-img-h: min(56vh, 460px);
+  --hero-flex-m: 0 0 auto;
+  --hero-img-flex-m: 0 0 auto;
+  --hero-img-h-m: 42vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.fav_title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--title-background);
+}
+
+.fav_cta {
+  align-self: center;
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--main);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.fav_cta:hover {
+  gap: 0.6rem;
+}
+
+.fav_cta:hover {
+  color: var(--main-dark);
+}
+
+@media (max-width: 992px) {
+  .fav_title {
+    font-size: 2rem;
+  }
+}

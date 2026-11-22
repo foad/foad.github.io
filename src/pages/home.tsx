@@ -1,6 +1,6 @@
 import { Hero } from "../components/hero";
 import { Nav } from "../components/nav";
-import { Carousel } from "../components/carousel";
+import { Favourites } from "../components/favourites/favourites";
 import { About } from "../components/about";
 import styles from "../app.module.css";
 
@@ -12,7 +12,7 @@ export const Home = () => {
       </header>
       <main className={styles.main}>
         <Hero />
-        <Carousel />
+        <Favourites />
         <About />
       </main>
     </div>

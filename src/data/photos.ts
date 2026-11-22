@@ -19,6 +19,7 @@ export type Photo = {
   location: string;
   description: string;
   featured: boolean;
+  favourite: boolean;
   tags: string[];
   width: number | null;
   height: number | null;
@@ -62,6 +63,9 @@ export const sectionsWithPhotos = (): Section[] =>
     ...section,
     photos: photosBySection(section.id),
   })).filter((section) => section.photos.length > 0);
+
+export const favouritePhotos = (): Photo[] =>
+  sortPhotos(photos.filter((photo) => photo.favourite));
 
 export const featuredPhoto = (): Photo | undefined => {
   const flagged = sortPhotos(photos.filter((photo) => photo.featured));

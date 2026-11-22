@@ -51,6 +51,7 @@ const mapPhoto = (r) => ({
   location: r.location || "",
   description: r.description || "",
   featured: Boolean(r.featured),
+  favourite: Boolean(r.favourite),
   tags: Array.isArray(r.tags) ? r.tags : [],
   width: num(r.width),
   height: num(r.height),

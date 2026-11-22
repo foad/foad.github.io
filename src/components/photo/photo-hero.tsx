@@ -1,5 +1,5 @@
 import { heroUrl, exifLine, type Photo } from "../../data/photos";
-import styles from "./gallery.module.css";
+import styles from "./photo-hero.module.css";
 
 const formatDate = (iso: string) => {
   const d = new Date(iso);
@@ -11,12 +11,12 @@ const formatDate = (iso: string) => {
   });
 };
 
-type GalleryHeroProps = {
+type PhotoHeroProps = {
   photo: Photo;
   onOpen: () => void;
 };
 
-export const GalleryHero = ({ photo, onOpen }: GalleryHeroProps) => {
+export const PhotoHero = ({ photo, onOpen }: PhotoHeroProps) => {
   const s = photo.settings;
   const settings = exifLine(photo);
 
